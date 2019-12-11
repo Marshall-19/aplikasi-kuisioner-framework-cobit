@@ -1,3 +1,4 @@
+<?php
 require_once "models.php";
 class KategoriPertanyaan extends Models {
   function __construct()
