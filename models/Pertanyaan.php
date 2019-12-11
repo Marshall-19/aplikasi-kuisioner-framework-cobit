@@ -8,6 +8,5 @@ class Pertanyaan extends Models {
     $this->primaryKey = "pertanyaan_id";
     $this->kolomBawaanCrud = ["pertanyaan", "kategori_id"]; // daftar kolom pada tabel kecuali primary keynya
     $this->view = "data_pertanyaan";
-   
   }
 }

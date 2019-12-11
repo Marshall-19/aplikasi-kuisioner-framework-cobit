@@ -3,31 +3,32 @@
 require_once "models/KategoriPertanyaan.php";
 $kategori = new KategoriPertanyaan();
 
+// contoh tambah data
+$kategori->tambahData([
+  "kategori_nama" => "ME 1",
+  "kategori_keterangan" => "Kualitas Madam",
+]);
+
 // ambil data kategori
 $data_kategori = $kategori->ambilData();
 
 // menampilkan data
-foreach($data_kategori as $no => $kategori)
+foreach($data_kategori as $no => $kat)
 {
-  echo $kategori['kategori_id'];
-  echo $kategori['kategori_nama'];
-  echo $kategori['kategori_keterangan'];
+  echo $kat['kategori_id'];
+  echo $kat['kategori_nama'];
+  echo $kat['kategori_keterangan'];
 }
 
-// contoh tambah data
-$kategori->tambahData([
-  "kategori_nama" => $_POST['kategori_nama'],
-  "kategori_keterangan" => $_POST['kategori_keterangan'],
-]);
 
 // contoh edit data
-$id = 12;
-$kategori->tambahData($id, [
-  "kategori_nama" => $_POST['kategori_nama'],
-  "kategori_keterangan" => $_POST['kategori_keterangan'],
+$id = 1;
+$kategori->editData($id, [
+  "kategori_nama" => "ME 22",
+  "kategori_keterangan" => "Kualitas Kampret",
 ]);
 
 // contoh hapus data
-$id = 10;
+$id = 1;
 $kategori->hapusData($id);
 

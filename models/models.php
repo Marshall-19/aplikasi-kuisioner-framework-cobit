@@ -1,4 +1,6 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 require_once "database.php";
 use Medoo\Medoo;
 class Models {
@@ -14,13 +16,12 @@ class Models {
     // pengaturan database
     $this->db = new Medoo([
       'database_type' => 'mysql',
-      'database_name' => 'db_kuisioner',
-      'server' => 'localhost',
+      'database_name' => 'db_kuisioner_cobit',
+      'server' => 'db',
       'username' => 'root',
-      'password' => ''
+      'password' => 'mysql'
     ]);
   }
-  
  
   /*
     ambilData(3, ["username", "password", "level"]);
@@ -88,7 +89,7 @@ class Models {
     ])
     edit data dengan kolom diatas dimana id = 12
   */
-  public function ubahData($id, $data)
+  public function editData($id, $data)
   {
     foreach($this->kolomBawaanCrud as $d)
     {
@@ -104,7 +105,7 @@ class Models {
   */
   public function hapusData($id)
   {
-    $this->db->delete($this->tabel, [$this->primaryKey => $id]);=
+    $this->db->delete($this->tabel, [$this->primaryKey => $id]);
     return true;
   }
 }
