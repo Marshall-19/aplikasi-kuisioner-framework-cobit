@@ -1,4 +1,5 @@
 <?php
+require_once "database.php";
 use Medoo\Medoo;
 class Models {
 	protected $db;
@@ -10,19 +11,24 @@ class Models {
   public $view = null;
   function __construct()
   {
-    parent::__construct();
+    // pengaturan database
     $this->db = new Medoo([
       'database_type' => 'mysql',
-      'database_name' => 'mandanon_kopi',
+      'database_name' => 'db_kuisioner',
       'server' => 'localhost',
-      'username' => 'mandanon_kopi',
-      'password' => 'qwe123*IOP'
+      'username' => 'root',
+      'password' => ''
     ]);
   }
   
-  
-  // id = pilih data berdasarkan id
-  // kolom = daftar kolom yang ingin ditampilkan, berupa array
+ 
+  /*
+    ambilData(3, ["username", "password", "level"]);
+    kode diatas berarti mengambil data dengan id = 3 dan ambil kolom username, password dan level
+    
+    ambilData()
+    kode diatas berarti mengambil seluruh data dan seluruh kolom
+  */
   public function ambilData($id = null, $kolom = "*")
 	{
 		$tabel = $this->tabel;
@@ -40,8 +46,14 @@ class Models {
     }
 	}
   
-  // $where = ambil data dengan kondisi tertentu. array assosiatif
-  // kolom = kolom yang ingin ditampilkan
+  /*
+    ambilDataDenganKondisi(["username" => "madam", "password" => "123"], ["username"])
+    kode diatas berarti ambil data dimana username = madam dan password = 123 serta tampilkan saja kolom username
+    
+    ambilDataDenganKondisi(["username" => "madam", "password" => "123"])
+    kode diatas berarti ambil data dimana username = madam dan password = 123 serta tampilkan semua kolom
+    
+  */
 	public function ambilDataDenganKondisi($where, $kolom = "*")
 	{
     $tabel = $this->tabel;
@@ -52,7 +64,13 @@ class Models {
     return $this->db->select($tabel, $kolom, $where);
 	}
   
-  // method untuk menambah data
+  /*
+    tambahData([
+    	"username" => $_POST['username'],
+	"password" => $_POST['password']
+    ])
+    tambah data tabel dengan data diatas
+  */
   public function tambahData($data)
   {
     foreach($this->kolomBawaanCrud as $d)
@@ -60,11 +78,16 @@ class Models {
       $this->data[$d] = $data[$d];
     }
     $this->db->insert($this->tabel, $this->data);
-    notifikasi("Pesan!", "Data berhasil ditambahkan", "primary");
     return $this->db->id();
   }
   
-  // method untuk edit data
+  /*
+    editData(12,[
+    	"username" => $_POST['username'],
+	"password" => $_POST['password']
+    ])
+    edit data dengan kolom diatas dimana id = 12
+  */
   public function ubahData($id, $data)
   {
     foreach($this->kolomBawaanCrud as $d)
@@ -72,15 +95,16 @@ class Models {
       $this->data[$d] = $data[$d];
     }
     $this->db->update($this->tabel, $this->data, [$this->primaryKey => $id]);
-    notifikasi("Pesan!", "Data berhasil diedit", "primary");
     return true;
   }
   
-  // method untuk hapus data
+  /*
+    hapusData(12)
+    hapus data dengan id = 12
+  */
   public function hapusData($id)
   {
-    $this->db->delete($this->tabel, [$this->primaryKey => $id]);
-    notifikasi("Pesan!", "Data berhasil dihapus", "primary");
+    $this->db->delete($this->tabel, [$this->primaryKey => $id]);=
     return true;
   }
 }
