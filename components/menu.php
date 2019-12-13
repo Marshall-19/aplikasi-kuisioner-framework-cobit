@@ -9,7 +9,7 @@
                             <ul class="mobile-menu-nav">
                               <li class="active"><a href="beranda.php">Beranda</a></li>
                               <li><a href="tampil_responden.php">Data Responden</a></li>
-                              <li><a href="tampil_kategori_pertanyaan.php">Data Kategori Pertanyaan</a></li>
+                              <li><a href="tampil_domain_pertanyaan.php">Data Domain Pertanyaan</a></li>
                               <li><a href="tampil_pertanyaan.php">Data Pertanyaan</a></li>
                               <li><a href="tampil_kuisioner.php">Data Kuisioner</a></li>
                             </ul>
@@ -28,7 +28,7 @@
                   <ul class="nav nav-tabs notika-menu-wrap menu-it-icon-pro">
                     <li class="active"><a href="beranda.php"> Beranda</a></li>
                     <li><a href="tampil_responden.php">Data Responden</a></li>
-                    <li><a href="tampil_kategori_pertanyaan.php">Data Kategori Pertanyaan</a></li>
+                    <li><a href="tampil_domain_pertanyaan.php">Data Domain Pertanyaan</a></li>
                     <li><a href="tampil_pertanyaan.php">Data Pertanyaan</a></li>
                     <li><a href="tampil_kuisioner.php">Data Kuisioner</a></li>
                   </ul>

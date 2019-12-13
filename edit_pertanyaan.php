@@ -1,12 +1,12 @@
 <?php
   require_once "lib/helper.php";
-  require_once "models/KategoriPertanyaan.php";
+  require_once "models/DomainPertanyaan.php";
   require_once "models/Pertanyaan.php";
-  $kategori = new KategoriPertanyaan();
-  $data_kategori = $kategori->ambilData();
+  $domain = new DomainPertanyaan();
+  $data_domain = $domain->ambilData();
   
   $pertanyaan = new Pertanyaan();
-  $detail_kategori = $pertanyaan->ambilData($_GET['pertanyaan_id']);
+  $detail_domain = $pertanyaan->ambilData($_GET['pertanyaan_id']);
 ?>
 <!doctype html>
 <html class="no-js" lang="">
@@ -36,27 +36,27 @@
                     <!-- BAGIAN ISI KONTEN -->
                     <button class="btn btn-success btn-sm" onclick="window.history.back();">Kembali</button>
                     <form action="proses_edit_pertanyaan.php" method="POST">
-                      <input type="hidden" name="pertanyaan_id" value="<?=$detail_kategori['pertanyaan_id']?>" />
+                      <input type="hidden" name="pertanyaan_id" value="<?=$detail_domain['pertanyaan_id']?>" />
                       <div class="form-group">
                         <label>Isi Pertanyaan</label>
-                        <textarea class="form-control" name="pertanyaan"><?=$detail_kategori['pertanyaan']?></textarea>
+                        <textarea class="form-control" name="pertanyaan"><?=$detail_domain['pertanyaan']?></textarea>
                       </div>
                       <div class="form-group">
-                        <label>Kategori</label>
-                        <select name="kategori_id" class="form-control">
-                          <option>Pilih Kategori</option>
+                        <label>Domain</label>
+                        <select name="domain_id" class="form-control">
+                          <option>Pilih Domain</option>
                           <?php
-                            $data_kategori = $kategori->ambilData();
-                            foreach($data_kategori as $kat)
+                            $data_domain = $domain->ambilData();
+                            foreach($data_domain as $kat)
                             {
                           ?>
-                            <option value="<?=$kat['kategori_id']?>"><?=$kat['kategori_nama']." ".$kat['kategori_keterangan']?></option>
+                            <option value="<?=$kat['domain_id']?>"><?=$kat['domain_nama']." ".$kat['domain_keterangan']?></option>
                           <?php
                             }
                           ?>
                         </select>
                         <script>
-                          document.getElementsByName("kategori_id")[0].value = "<?=$detail_kategori['kategori_id']?>";  
+                          document.getElementsByName("domain_id")[0].value = "<?=$detail_domain['domain_id']?>";  
                         </script>
                       </div>
                       

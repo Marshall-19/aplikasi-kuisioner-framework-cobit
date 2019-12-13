@@ -1,34 +1,34 @@
 <?php
 
-require_once "models/KategoriPertanyaan.php";
-$kategori = new KategoriPertanyaan();
+require_once "models/DomainPertanyaan.php";
+$domain = new DomainPertanyaan();
 
 // contoh tambah data
-$kategori->tambahData([
-  "kategori_nama" => "ME 1",
-  "kategori_keterangan" => "Kualitas Madam",
+$domain->tambahData([
+  "domain_nama" => "ME 1",
+  "domain_keterangan" => "Kualitas Madam",
 ]);
 
-// ambil data kategori
-$data_kategori = $kategori->ambilData();
+// ambil data domain
+$data_domain = $domain->ambilData();
 
 // menampilkan data
-foreach($data_kategori as $no => $kat)
+foreach($data_domain as $no => $kat)
 {
-  echo $kat['kategori_id'];
-  echo $kat['kategori_nama'];
-  echo $kat['kategori_keterangan'];
+  echo $kat['domain_id'];
+  echo $kat['domain_nama'];
+  echo $kat['domain_keterangan'];
 }
 
 
 // contoh edit data
 $id = 1;
-$kategori->editData($id, [
-  "kategori_nama" => "ME 22",
-  "kategori_keterangan" => "Kualitas Kampret",
+$domain->editData($id, [
+  "domain_nama" => "ME 22",
+  "domain_keterangan" => "Kualitas Kampret",
 ]);
 
 // contoh hapus data
 $id = 1;
-$kategori->hapusData($id);
+$domain->hapusData($id);
 

@@ -36,7 +36,7 @@ $pertanyaan = new Pertanyaan();
                       <tr>
                         <th>No</th>
                         <th>Isi Pertanyaan</th>
-                        <th>Kategori</th>
+                        <th>Domain</th>
                         <th>Aksi</th>
                       </tr>
                     </thead>
@@ -52,7 +52,7 @@ $pertanyaan = new Pertanyaan();
                       <tr>
                         <td><?=$no+1?></td>
                         <td><?=$pet['pertanyaan']?></td>
-                        <td><?=$pet['kategori_nama']?></td>
+                        <td><?=$pet['domain_nama']?></td>
                         <td>
                           <a href="edit_pertanyaan.php?pertanyaan_id=<?=$pet['pertanyaan_id']?>" class="btn btn-info btn-sm">Edit</a>
                           <a href="proses_hapus_pertanyaan.php?pertanyaan_id=<?=$pet['pertanyaan_id']?>" class="btn btn-danger btn-sm">Hapus</a>

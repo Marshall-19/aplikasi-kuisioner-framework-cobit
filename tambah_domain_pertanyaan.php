@@ -28,14 +28,14 @@
                   <div class="curved-ctn">
                     <!-- BAGIAN ISI KONTEN -->
                     <button class="btn btn-success btn-sm" onclick="window.history.back();">Kembali</button>
-                    <form action="proses_tambah_kategori_pertanyaan.php" method="POST">
+                    <form action="proses_tambah_domain_pertanyaan.php" method="POST">
                       <div class="form-group">
-                        <label>Nama Kategori</label>
-                        <input type="text" name="kategori_nama" class="form-control" />
+                        <label>Nama Domain</label>
+                        <input type="text" name="domain_nama" class="form-control" />
                       </div>
                       <div class="form-group">
                         <label>Keterangan</label>
-                        <input type="text" name="kategori_keterangan" class="form-control" />
+                        <input type="text" name="domain_keterangan" class="form-control" />
                       </div>
                       
                       <div class="form-group">

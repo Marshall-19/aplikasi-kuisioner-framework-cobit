@@ -10,7 +10,7 @@ CREATE TABLE `data_kuisioner` (`kuisioner_kode` varchar(10), `kuisioner_id` int(
 
 
 DROP VIEW IF EXISTS `data_pertanyaan`;
-CREATE TABLE `data_pertanyaan` (`pertanyaan_id` int(11), `pertanyaan` text, `kategori_id` int(11), `kategori_nama` varchar(100), `kategori_keterangan` varchar(255));
+CREATE TABLE `data_pertanyaan` (`pertanyaan_id` int(11), `pertanyaan` text, `domain_id` int(11), `domain_nama` varchar(100), `domain_keterangan` varchar(255));
 
 
 DROP TABLE IF EXISTS `tbl_jawaban_kuisioner`;
@@ -210,15 +210,15 @@ INSERT INTO `tbl_jawaban_kuisioner` (`jawaban_id`, `kuisioner_id`, `skor`, `pert
 (207,	8,	2,	26),
 (208,	8,	1,	27);
 
-DROP TABLE IF EXISTS `tbl_kategori_pertanyaan`;
-CREATE TABLE `tbl_kategori_pertanyaan` (
-  `kategori_id` int(11) NOT NULL AUTO_INCREMENT,
-  `kategori_nama` varchar(100) NOT NULL,
-  `kategori_keterangan` varchar(255) NOT NULL,
-  PRIMARY KEY (`kategori_id`)
+DROP TABLE IF EXISTS `tbl_domain_pertanyaan`;
+CREATE TABLE `tbl_domain_pertanyaan` (
+  `domain_id` int(11) NOT NULL AUTO_INCREMENT,
+  `domain_nama` varchar(100) NOT NULL,
+  `domain_keterangan` varchar(255) NOT NULL,
+  PRIMARY KEY (`domain_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `tbl_kategori_pertanyaan` (`kategori_id`, `kategori_nama`, `kategori_keterangan`) VALUES
+INSERT INTO `tbl_domain_pertanyaan` (`domain_id`, `domain_nama`, `domain_keterangan`) VALUES
 (38,	'ME 1',	'Monitor and Evaluate IT Performance'),
 (39,	'ME 2',	' Monitor and Evaluate Internal Control'),
 (40,	'ME 3',	'Ensure Regulatory Compliance With External Requirements'),
@@ -248,13 +248,13 @@ DROP TABLE IF EXISTS `tbl_pertanyaan`;
 CREATE TABLE `tbl_pertanyaan` (
   `pertanyaan_id` int(11) NOT NULL AUTO_INCREMENT,
   `pertanyaan` text NOT NULL,
-  `kategori_id` int(11) NOT NULL,
+  `domain_id` int(11) NOT NULL,
   PRIMARY KEY (`pertanyaan_id`),
-  KEY `kategori_id` (`kategori_id`),
-  CONSTRAINT `tbl_pertanyaan_ibfk_1` FOREIGN KEY (`kategori_id`) REFERENCES `tbl_kategori_pertanyaan` (`kategori_id`) ON DELETE CASCADE
+  KEY `domain_id` (`domain_id`),
+  CONSTRAINT `tbl_pertanyaan_ibfk_1` FOREIGN KEY (`domain_id`) REFERENCES `tbl_domain_pertanyaan` (`domain_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `tbl_pertanyaan` (`pertanyaan_id`, `pertanyaan`, `kategori_id`) VALUES
+INSERT INTO `tbl_pertanyaan` (`pertanyaan_id`, `pertanyaan`, `domain_id`) VALUES
 (2,	'Rail Document System (RDS) yang ada saat ini telah berjalan sesuai dengan kebutuhan perusahaan',	38),
 (3,	'Rail Document System (RDS) yang ada saat ini telah memiliki kinerja serta kualitas yang baik.',	38),
 (4,	'Rail Document System (RDS) yang ada saat ini telah mampu mengatasi masalah dan kendala dalam proses surat menyurat yang ada pada perusahaan',	38),
@@ -309,6 +309,6 @@ DROP TABLE IF EXISTS `data_kuisioner`;
 CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `data_kuisioner` AS select `tbl_kuisioner`.`kuisioner_kode` AS `kuisioner_kode`,`tbl_kuisioner`.`kuisioner_id` AS `kuisioner_id`,`tbl_kuisioner`.`kuisioner_tgl` AS `kuisioner_tgl`,`tbl_kuisioner`.`responden_id` AS `responden_id`,`tbl_responden`.`responden_nama` AS `responden_nama`,`tbl_responden`.`responden_usia` AS `responden_usia`,`tbl_responden`.`responden_jk` AS `responden_jk`,`tbl_responden`.`responden_pendidikan` AS `responden_pendidikan`,`tbl_responden`.`responden_masa_kerja` AS `responden_masa_kerja`,`tbl_responden`.`responden_status_sosial` AS `responden_status_sosial`,sum(`tbl_jawaban_kuisioner`.`skor`) AS `kuisioner_skor`,count(`tbl_jawaban_kuisioner`.`pertanyaan_id`) AS `kuisioner_total_pertanyaan`,(select count(`kuisioner`.`responden_id`) from `tbl_kuisioner` `kuisioner` where `kuisioner`.`kuisioner_kode` = `tbl_kuisioner`.`kuisioner_kode` group by `kuisioner`.`kuisioner_kode`) AS `kuisioner_total_responden` from ((`tbl_kuisioner` join `tbl_jawaban_kuisioner` on(`tbl_jawaban_kuisioner`.`kuisioner_id` = `tbl_kuisioner`.`kuisioner_id`)) join `tbl_responden` on(`tbl_responden`.`responden_id` = `tbl_kuisioner`.`responden_id`)) group by `tbl_jawaban_kuisioner`.`kuisioner_id`;
 
 DROP TABLE IF EXISTS `data_pertanyaan`;
-CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `data_pertanyaan` AS select `tbl_pertanyaan`.`pertanyaan_id` AS `pertanyaan_id`,`tbl_pertanyaan`.`pertanyaan` AS `pertanyaan`,`tbl_pertanyaan`.`kategori_id` AS `kategori_id`,`tbl_kategori_pertanyaan`.`kategori_nama` AS `kategori_nama`,`tbl_kategori_pertanyaan`.`kategori_keterangan` AS `kategori_keterangan` from (`tbl_pertanyaan` join `tbl_kategori_pertanyaan` on(`tbl_pertanyaan`.`kategori_id` = `tbl_kategori_pertanyaan`.`kategori_id`));
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `data_pertanyaan` AS select `tbl_pertanyaan`.`pertanyaan_id` AS `pertanyaan_id`,`tbl_pertanyaan`.`pertanyaan` AS `pertanyaan`,`tbl_pertanyaan`.`domain_id` AS `domain_id`,`tbl_domain_pertanyaan`.`domain_nama` AS `domain_nama`,`tbl_domain_pertanyaan`.`domain_keterangan` AS `domain_keterangan` from (`tbl_pertanyaan` join `tbl_domain_pertanyaan` on(`tbl_pertanyaan`.`domain_id` = `tbl_domain_pertanyaan`.`domain_id`));
 
 -- 2019-12-11 17:29:35

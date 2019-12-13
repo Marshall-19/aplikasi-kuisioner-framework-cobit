@@ -1,7 +1,7 @@
 <?php
   require_once "lib/helper.php";
-  require_once "models/KategoriPertanyaan.php";
-  $kategori = new KategoriPertanyaan();
+  require_once "models/DomainPertanyaan.php";
+  $domain = new DomainPertanyaan();
 ?>
 <!doctype html>
 <html class="no-js" lang="">
@@ -36,15 +36,15 @@
                       <textarea class="form-control" name="pertanyaan"></textarea>
                     </div>
                     <div class="form-group">
-                      <label>Kategori</label>
-                      <select name="kategori_id" class="form-control">
-                        <option>Pilih Kategori</option>
+                      <label>Domain</label>
+                      <select name="domain_id" class="form-control">
+                        <option>Pilih Domain</option>
                         <?php
-                          $data_kategori = $kategori->ambilData();
-                          foreach($data_kategori as $kat)
+                          $data_domain = $domain->ambilData();
+                          foreach($data_domain as $kat)
                           {
                         ?>
-                          <option value="<?=$kat['kategori_id']?>"><?=$kat['kategori_nama']." ".$kat['kategori_keterangan']?></option>
+                          <option value="<?=$kat['domain_id']?>"><?=$kat['domain_nama']." ".$kat['domain_keterangan']?></option>
                         <?php
                           }
                         ?>

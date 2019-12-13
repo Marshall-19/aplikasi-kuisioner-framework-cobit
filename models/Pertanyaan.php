@@ -6,7 +6,7 @@ class Pertanyaan extends Models {
     parent::__construct();
     $this->tabel = "tbl_pertanyaan";
     $this->primaryKey = "pertanyaan_id";
-    $this->kolomBawaanCrud = ["pertanyaan", "kategori_id"]; // daftar kolom pada tabel kecuali primary keynya
+    $this->kolomBawaanCrud = ["pertanyaan", "domain_id"]; // daftar kolom pada tabel kecuali primary keynya
     $this->view = "data_pertanyaan";
   }
 }

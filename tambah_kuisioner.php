@@ -1,8 +1,8 @@
 <?php
   require_once "lib/helper.php";
-  require_once "models/KategoriPertanyaan.php";
+  require_once "models/DomainPertanyaan.php";
   require_once "models/Pertanyaan.php";
-  $kategori = new KategoriPertanyaan();
+  $domain = new DomainPertanyaan();
   $pertanyaan = new Pertanyaan();
 ?>
 <!doctype html>
@@ -80,11 +80,11 @@
                     <hr>
                     
                     <?php
-                      $data_kategori = $kategori->ambilData();
-                      foreach($data_kategori as $kat)
+                      $data_domain = $domain->ambilData();
+                      foreach($data_domain as $kat)
                       {
                     ?>
-                        <h3><?=$kat['kategori_nama']." ".$kat['kategori_keterangan']?></h3>
+                        <h3><?=$kat['domain_nama']." ".$kat['domain_keterangan']?></h3>
                         <table class="table table-bordered table-stripped">
                           <thead>
                             <tr>
@@ -99,7 +99,7 @@
                           </thead>
                           <tbody>
                             <?php
-                              $data_pertanyaan = $pertanyaan->ambilDataDenganKondisi(["kategori_id" => $kat['kategori_id']]);
+                              $data_pertanyaan = $pertanyaan->ambilDataDenganKondisi(["domain_id" => $kat['domain_id']]);
                               foreach($data_pertanyaan as $no => $pet)
                               {
                             ?>
