@@ -12,6 +12,8 @@
                               <li><a href="tampil_domain_pertanyaan.php">Data Domain Pertanyaan</a></li>
                               <li><a href="tampil_pertanyaan.php">Data Pertanyaan</a></li>
                               <li><a href="tampil_kuisioner.php">Data Kuisioner</a></li>
+                              <li><a href="tambah_indeks_maturity.php">Indeks Maturity</a></li>
+                              <li><a href="tambah_gap.php">GAP</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -31,6 +33,8 @@
                     <li><a href="tampil_domain_pertanyaan.php">Data Domain Pertanyaan</a></li>
                     <li><a href="tampil_pertanyaan.php">Data Pertanyaan</a></li>
                     <li><a href="tampil_kuisioner.php">Data Kuisioner</a></li>
+                    <li><a href="tambah_indeks_maturity.php">Indeks Maturity</a></li>
+                    <li><a href="tambah_gap.php">GAP</a></li>
                   </ul>
                 </div>
             </div>
