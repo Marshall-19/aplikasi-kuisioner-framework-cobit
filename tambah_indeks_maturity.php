@@ -31,7 +31,7 @@
                     <!-- BAGIAN ISI KONTEN -->
                     <h2>Perhitungan Indeks Maturity</h2>
                   <button class="btn btn-success btn-sm" onclick="window.history.back();">Kembali</button>
-                  <form action="proses_tambah_pertanyaan.php" method="POST">
+                  <form action="proses_tambah_indeks_maturity.php" method="POST">
                     <div class="form-group">
                       <label>Id Domain</label>
                       <select name="domain_id" class="form-control">
@@ -49,28 +49,28 @@
                     </div>
                     <div class="form-group">
                       <label>Total Pertanyaan</label>
-                      <input type="number" name="pertanyaan_total" class="form-control" />
+                      <input type="number" name="pertanyaan_total" class="form-control" readonly />
                     </div>
                     <div class="form-group">
                       <label>Jumlah Responden</label>
-                      <input type="number" name="responden_total" class="form-control" />
+                      <input type="number" name="responden_total" class="form-control" readonly />
                     </div>
                     <div class="form-group">
                       <label>Jumlah Nilai</label>
-                      <input type="number" name="nilai_jumlah" class="form-control" />
+                      <input type="number" name="nilai_total" class="form-control" readonly />
                     </div>
                     <div class="form-group">
                       <label>Pertanyaan X Responden</label>
-                      <input type="number" name="pertanyaan_responden" class="form-control" />
+                      <input type="number" name="pertanyaan_responden" class="form-control" readonly />
                     </div>
                     <div class="form-group">
                       <label>Indeks Maturity</label>
-                      <input type="number" name="indeks_maturiy" class="form-control" />
+                      <input type="text" name="indeks_maturity" class="form-control" readonly />
                     </div>
                     
                     <div class="form-group">
                       <label>Keterangan</label>
-                      <input type="text" name="keterangan" class="form-control" />
+                      <input type="text" name="keterangan" class="form-control" readonly />
                     </div>
                     
                     <div class="form-group">
@@ -90,10 +90,22 @@
     <?php includeTemplate("footer.php"); ?>
     <?php includeTemplate("script.php"); ?>
     <script>
+      function ambilDataDomain() {
+        var domain_id = document.getElementsByName("domain_id")[0].value;
+        axios.get("ajax_ambil_data_domain.php?domain_id=" + domain_id)
+          .then(function(res){
+            document.getElementsByName("pertanyaan_total")[0].value = res.data.pertanyaan_total;
+            document.getElementsByName("responden_total")[0].value = res.data.responden_total;
+            document.getElementsByName("nilai_total")[0].value = res.data.skor_total;
+            document.getElementsByName("pertanyaan_responden")[0].value = res.data.pertanyaan_total * res.data.responden_total;
+            
+            hitungIndeksMaturity();
+          })
+      }
       function hitungIndeksMaturity()
       {
         var im = 0;
-        var jumlah_nilai = document.getElementsByName("nilai_jumlah")[0].value || 0;
+        var jumlah_nilai = document.getElementsByName("nilai_total")[0].value || 0;
         var jumlah_pertanyaan = document.getElementsByName("pertanyaan_total")[0].value || 0;
         var jumlah_responden = document.getElementsByName("responden_total")[0].value || 0;
         var keterangan = "";
@@ -128,14 +140,11 @@
           keterangan = "Optimal";
         }
         
-        document.getElementsByName("indeks_maturiy")[0].value = im;
+        document.getElementsByName("indeks_maturity")[0].value = im;
         document.getElementsByName("keterangan")[0].value = keterangan;
       }
       
-      document.getElementsByName("pertanyaan_total")[0].addEventListener("keyup", hitungIndeksMaturity);   
-      document.getElementsByName("responden_total")[0].addEventListener("keyup", hitungIndeksMaturity);   
-      document.getElementsByName("nilai_jumlah")[0].addEventListener("keyup", hitungIndeksMaturity);   
-      document.getElementsByName("pertanyaan_responden")[0].addEventListener("keyup", hitungIndeksMaturity);   
+      document.getElementsByName("domain_id")[0].addEventListener("change", ambilDataDomain);  
     </script>
 </body>
 

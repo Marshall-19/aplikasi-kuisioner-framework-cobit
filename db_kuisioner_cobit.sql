@@ -5,6 +5,14 @@ SET time_zone = '+00:00';
 SET foreign_key_checks = 0;
 SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
 
+DROP VIEW IF EXISTS `data_gap`;
+CREATE TABLE `data_gap` (`domain_nama` varchar(100), `domain_keterangan` varchar(255), `indeks_id` int(11), `domain_id` int(11), `pertanyaan_total` int(11), `responden_total` int(11), `nilai_total` int(11), `indeks_maturity` float, `keterangan` varchar(50), `harapan` int(11), `gap` float, `gap_id` int(11));
+
+
+DROP VIEW IF EXISTS `data_indeks_maturity`;
+CREATE TABLE `data_indeks_maturity` (`domain_nama` varchar(100), `domain_keterangan` varchar(255), `indeks_id` int(11), `domain_id` int(11), `pertanyaan_total` int(11), `responden_total` int(11), `nilai_total` int(11), `indeks_maturity` float, `keterangan` varchar(50));
+
+
 DROP VIEW IF EXISTS `data_kuisioner`;
 CREATE TABLE `data_kuisioner` (`kuisioner_kode` varchar(10), `kuisioner_id` int(11), `kuisioner_tgl` date, `responden_id` int(11), `responden_nama` varchar(100), `responden_usia` enum('17 - 25 Tahun','26 - 45 Tahun','> 46 Tahun'), `responden_jk` enum('Pria','Wanita'), `responden_pendidikan` enum('SMA','D3','S1','S2'), `responden_masa_kerja` enum('0 - 5 Tahun','6 - 10 Tahun','> 10 Tahun'), `responden_status_sosial` enum('Menikah','Belum Menikah'), `kuisioner_skor` decimal(27,0), `kuisioner_total_pertanyaan` bigint(21), `kuisioner_total_responden` bigint(21));
 
@@ -12,6 +20,52 @@ CREATE TABLE `data_kuisioner` (`kuisioner_kode` varchar(10), `kuisioner_id` int(
 DROP VIEW IF EXISTS `data_pertanyaan`;
 CREATE TABLE `data_pertanyaan` (`pertanyaan_id` int(11), `pertanyaan` text, `domain_id` int(11), `domain_nama` varchar(100), `domain_keterangan` varchar(255));
 
+
+DROP TABLE IF EXISTS `tbl_domain_pertanyaan`;
+CREATE TABLE `tbl_domain_pertanyaan` (
+  `domain_id` int(11) NOT NULL AUTO_INCREMENT,
+  `domain_nama` varchar(100) NOT NULL,
+  `domain_keterangan` varchar(255) NOT NULL,
+  PRIMARY KEY (`domain_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `tbl_domain_pertanyaan` (`domain_id`, `domain_nama`, `domain_keterangan`) VALUES
+(38,	'ME 1',	'Monitor and Evaluate IT Performance'),
+(39,	'ME 2',	' Monitor and Evaluate Internal Control'),
+(40,	'ME 3',	'Ensure Regulatory Compliance With External Requirements'),
+(41,	'ME 4',	'Provide IT Government');
+
+DROP TABLE IF EXISTS `tbl_gap`;
+CREATE TABLE `tbl_gap` (
+  `gap_id` int(11) NOT NULL AUTO_INCREMENT,
+  `indeks_id` int(11) NOT NULL,
+  `harapan` int(11) NOT NULL DEFAULT 5,
+  `gap` float NOT NULL,
+  PRIMARY KEY (`gap_id`),
+  UNIQUE KEY `indeks_id` (`indeks_id`),
+  CONSTRAINT `tbl_gap_ibfk_1` FOREIGN KEY (`indeks_id`) REFERENCES `tbl_indeks_maturity` (`indeks_id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `tbl_gap` (`gap_id`, `indeks_id`, `harapan`, `gap`) VALUES
+(1,	2,	5,	1.85714);
+
+DROP TABLE IF EXISTS `tbl_indeks_maturity`;
+CREATE TABLE `tbl_indeks_maturity` (
+  `indeks_id` int(11) NOT NULL AUTO_INCREMENT,
+  `domain_id` int(11) NOT NULL,
+  `pertanyaan_total` int(11) NOT NULL,
+  `responden_total` int(11) NOT NULL,
+  `nilai_total` int(11) NOT NULL,
+  `indeks_maturity` float NOT NULL,
+  `keterangan` varchar(50) NOT NULL,
+  PRIMARY KEY (`indeks_id`),
+  UNIQUE KEY `domain_id` (`domain_id`),
+  CONSTRAINT `tbl_indeks_maturity_ibfk_1` FOREIGN KEY (`domain_id`) REFERENCES `tbl_domain_pertanyaan` (`domain_id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `tbl_indeks_maturity` (`indeks_id`, `domain_id`, `pertanyaan_total`, `responden_total`, `nilai_total`, `indeks_maturity`, `keterangan`) VALUES
+(2,	38,	7,	7,	154,	3.14286,	'Ditetapkan'),
+(3,	39,	8,	7,	168,	3,	'Ditetapkan');
 
 DROP TABLE IF EXISTS `tbl_jawaban_kuisioner`;
 CREATE TABLE `tbl_jawaban_kuisioner` (
@@ -210,20 +264,6 @@ INSERT INTO `tbl_jawaban_kuisioner` (`jawaban_id`, `kuisioner_id`, `skor`, `pert
 (207,	8,	2,	26),
 (208,	8,	1,	27);
 
-DROP TABLE IF EXISTS `tbl_domain_pertanyaan`;
-CREATE TABLE `tbl_domain_pertanyaan` (
-  `domain_id` int(11) NOT NULL AUTO_INCREMENT,
-  `domain_nama` varchar(100) NOT NULL,
-  `domain_keterangan` varchar(255) NOT NULL,
-  PRIMARY KEY (`domain_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-INSERT INTO `tbl_domain_pertanyaan` (`domain_id`, `domain_nama`, `domain_keterangan`) VALUES
-(38,	'ME 1',	'Monitor and Evaluate IT Performance'),
-(39,	'ME 2',	' Monitor and Evaluate Internal Control'),
-(40,	'ME 3',	'Ensure Regulatory Compliance With External Requirements'),
-(41,	'ME 4',	'Provide IT Government');
-
 DROP TABLE IF EXISTS `tbl_kuisioner`;
 CREATE TABLE `tbl_kuisioner` (
   `kuisioner_id` int(11) NOT NULL AUTO_INCREMENT,
@@ -305,10 +345,16 @@ INSERT INTO `tbl_responden` (`responden_id`, `responden_nama`, `responden_usia`,
 (9,	'Atque illo nisi pari',	'26 - 45 Tahun',	'Wanita',	'D3',	'> 10 Tahun',	'Belum Menikah'),
 (10,	'Temporibus in nihil ',	'17 - 25 Tahun',	'Wanita',	'S2',	'6 - 10 Tahun',	'Menikah');
 
+DROP TABLE IF EXISTS `data_gap`;
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `data_gap` AS select `tbl_domain_pertanyaan`.`domain_nama` AS `domain_nama`,`tbl_domain_pertanyaan`.`domain_keterangan` AS `domain_keterangan`,`tbl_indeks_maturity`.`indeks_id` AS `indeks_id`,`tbl_indeks_maturity`.`domain_id` AS `domain_id`,`tbl_indeks_maturity`.`pertanyaan_total` AS `pertanyaan_total`,`tbl_indeks_maturity`.`responden_total` AS `responden_total`,`tbl_indeks_maturity`.`nilai_total` AS `nilai_total`,`tbl_indeks_maturity`.`indeks_maturity` AS `indeks_maturity`,`tbl_indeks_maturity`.`keterangan` AS `keterangan`,`tbl_gap`.`harapan` AS `harapan`,`tbl_gap`.`gap` AS `gap`,`tbl_gap`.`gap_id` AS `gap_id` from ((`tbl_indeks_maturity` join `tbl_domain_pertanyaan` on(`tbl_indeks_maturity`.`domain_id` = `tbl_domain_pertanyaan`.`domain_id`)) join `tbl_gap` on(`tbl_gap`.`indeks_id` = `tbl_indeks_maturity`.`indeks_id`));
+
+DROP TABLE IF EXISTS `data_indeks_maturity`;
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `data_indeks_maturity` AS select `tbl_domain_pertanyaan`.`domain_nama` AS `domain_nama`,`tbl_domain_pertanyaan`.`domain_keterangan` AS `domain_keterangan`,`tbl_indeks_maturity`.`indeks_id` AS `indeks_id`,`tbl_indeks_maturity`.`domain_id` AS `domain_id`,`tbl_indeks_maturity`.`pertanyaan_total` AS `pertanyaan_total`,`tbl_indeks_maturity`.`responden_total` AS `responden_total`,`tbl_indeks_maturity`.`nilai_total` AS `nilai_total`,`tbl_indeks_maturity`.`indeks_maturity` AS `indeks_maturity`,`tbl_indeks_maturity`.`keterangan` AS `keterangan` from (`tbl_indeks_maturity` join `tbl_domain_pertanyaan` on(`tbl_indeks_maturity`.`domain_id` = `tbl_domain_pertanyaan`.`domain_id`));
+
 DROP TABLE IF EXISTS `data_kuisioner`;
 CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `data_kuisioner` AS select `tbl_kuisioner`.`kuisioner_kode` AS `kuisioner_kode`,`tbl_kuisioner`.`kuisioner_id` AS `kuisioner_id`,`tbl_kuisioner`.`kuisioner_tgl` AS `kuisioner_tgl`,`tbl_kuisioner`.`responden_id` AS `responden_id`,`tbl_responden`.`responden_nama` AS `responden_nama`,`tbl_responden`.`responden_usia` AS `responden_usia`,`tbl_responden`.`responden_jk` AS `responden_jk`,`tbl_responden`.`responden_pendidikan` AS `responden_pendidikan`,`tbl_responden`.`responden_masa_kerja` AS `responden_masa_kerja`,`tbl_responden`.`responden_status_sosial` AS `responden_status_sosial`,sum(`tbl_jawaban_kuisioner`.`skor`) AS `kuisioner_skor`,count(`tbl_jawaban_kuisioner`.`pertanyaan_id`) AS `kuisioner_total_pertanyaan`,(select count(`kuisioner`.`responden_id`) from `tbl_kuisioner` `kuisioner` where `kuisioner`.`kuisioner_kode` = `tbl_kuisioner`.`kuisioner_kode` group by `kuisioner`.`kuisioner_kode`) AS `kuisioner_total_responden` from ((`tbl_kuisioner` join `tbl_jawaban_kuisioner` on(`tbl_jawaban_kuisioner`.`kuisioner_id` = `tbl_kuisioner`.`kuisioner_id`)) join `tbl_responden` on(`tbl_responden`.`responden_id` = `tbl_kuisioner`.`responden_id`)) group by `tbl_jawaban_kuisioner`.`kuisioner_id`;
 
 DROP TABLE IF EXISTS `data_pertanyaan`;
 CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `data_pertanyaan` AS select `tbl_pertanyaan`.`pertanyaan_id` AS `pertanyaan_id`,`tbl_pertanyaan`.`pertanyaan` AS `pertanyaan`,`tbl_pertanyaan`.`domain_id` AS `domain_id`,`tbl_domain_pertanyaan`.`domain_nama` AS `domain_nama`,`tbl_domain_pertanyaan`.`domain_keterangan` AS `domain_keterangan` from (`tbl_pertanyaan` join `tbl_domain_pertanyaan` on(`tbl_pertanyaan`.`domain_id` = `tbl_domain_pertanyaan`.`domain_id`));
 
--- 2019-12-11 17:29:35
+-- 2019-12-14 10:25:45

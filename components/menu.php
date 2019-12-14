@@ -1,3 +1,6 @@
+    <?php
+      require_once "lib/helper.php";
+    ?>
     <!-- End Header Top Area -->
     <!-- Mobile Menu start -->
     <div class="mobile-menu-area">
@@ -7,13 +10,15 @@
                     <div class="mobile-menu">
                         <nav id="dropdown">
                             <ul class="mobile-menu-nav">
-                              <li class="active"><a href="beranda.php">Beranda</a></li>
-                              <li><a href="tampil_responden.php">Data Responden</a></li>
-                              <li><a href="tampil_domain_pertanyaan.php">Data Domain Pertanyaan</a></li>
-                              <li><a href="tampil_pertanyaan.php">Data Pertanyaan</a></li>
-                              <li><a href="tampil_kuisioner.php">Data Kuisioner</a></li>
-                              <li><a href="tambah_indeks_maturity.php">Indeks Maturity</a></li>
-                              <li><a href="tambah_gap.php">GAP</a></li>
+                              <li <?=menuAktif("beranda.php");?>><a href="beranda.php">Beranda</a></li>
+                              <li <?=menuAktif("tampil_responden.php");?>><a href="tampil_responden.php">Data Responden</a></li>
+                              <li <?=menuAktif("tampil_domain_pertanyaan.php");?>><a href="tampil_domain_pertanyaan.php">Data Domain Pertanyaan</a></li>
+                              <li <?=menuAktif("tampil_pertanyaan.php");?>><a href="tampil_pertanyaan.php">Data Pertanyaan</a></li>
+                              <li <?=menuAktif("tampil_kuisioner.php");?>><a href="tampil_kuisioner.php">Data Kuisioner</a></li>
+                              <li <?=menuAktif("tampil_indeks_maturity.php");?>><a href="tampil_indeks_maturity.php">Indeks Maturity</a></li>
+                              <li <?=menuAktif("tampil_gap.php");?>><a href="tampil_gap.php">GAP</a></li>
+                              <li <?=menuAktif("laporan_indeks_maturity.php");?>><a href="laporan_indeks_maturity.php">Laporan Indeks Maturity</a></li>
+                              <li <?=menuAktif("laporan_gap.php");?>><a href="laporan_gap.php">Laporan GAP</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -28,13 +33,15 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                   <ul class="nav nav-tabs notika-menu-wrap menu-it-icon-pro">
-                    <li class="active"><a href="beranda.php"> Beranda</a></li>
-                    <li><a href="tampil_responden.php">Data Responden</a></li>
-                    <li><a href="tampil_domain_pertanyaan.php">Data Domain Pertanyaan</a></li>
-                    <li><a href="tampil_pertanyaan.php">Data Pertanyaan</a></li>
-                    <li><a href="tampil_kuisioner.php">Data Kuisioner</a></li>
-                    <li><a href="tambah_indeks_maturity.php">Indeks Maturity</a></li>
-                    <li><a href="tambah_gap.php">GAP</a></li>
+                    <li <?=menuAktif("beranda.php");?>><a href="beranda.php">Beranda</a></li>
+                    <li <?=menuAktif("tampil_responden.php");?>><a href="tampil_responden.php">Data Responden</a></li>
+                    <li <?=menuAktif("tampil_domain_pertanyaan.php");?>><a href="tampil_domain_pertanyaan.php">Data Domain Pertanyaan</a></li>
+                    <li <?=menuAktif("tampil_pertanyaan.php");?>><a href="tampil_pertanyaan.php">Data Pertanyaan</a></li>
+                    <li <?=menuAktif("tampil_kuisioner.php");?>><a href="tampil_kuisioner.php">Data Kuisioner</a></li>
+                    <li <?=menuAktif("tampil_indeks_maturity.php");?>><a href="tampil_indeks_maturity.php">Indeks Maturity</a></li>
+                    <li <?=menuAktif("tampil_gap.php");?>><a href="tampil_gap.php">GAP</a></li>
+                    <li <?=menuAktif("laporan_indeks_maturity.php");?>><a href="laporan_indeks_maturity.php">Laporan Indeks Maturity</a></li>
+                    <li <?=menuAktif("laporan_gap.php");?>><a href="laporan_gap.php">Laporan GAP</a></li>
                   </ul>
                 </div>
             </div>

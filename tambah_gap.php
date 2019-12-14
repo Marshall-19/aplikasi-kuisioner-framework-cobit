@@ -1,7 +1,7 @@
 <?php
   require_once "lib/helper.php";
-  require_once "models/DomainPertanyaan.php";
-  $domain = new DomainPertanyaan();
+  require_once "models/IndeksMaturity.php";
+  $domain = new IndeksMaturity();
 ?>
 <!doctype html>
 <html class="no-js" lang="">
@@ -31,17 +31,17 @@
                     <!-- BAGIAN ISI KONTEN -->
                     <h2>Perhitungan Nilai GAP</h2>
                   <button class="btn btn-success btn-sm" onclick="window.history.back();">Kembali</button>
-                  <form action="proses_tambah_pertanyaan.php" method="POST">
+                  <form action="proses_tambah_gap.php" method="POST">
                     <div class="form-group">
                       <label>Id Domain</label>
-                      <select name="domain_id" class="form-control">
+                      <select name="indeks_id" class="form-control">
                         <option>Pilih Domain</option>
                         <?php
                           $data_domain = $domain->ambilData();
                           foreach($data_domain as $kat)
                           {
                         ?>
-                          <option value="<?=$kat['domain_id']?>"><?=$kat['domain_nama']?></option>
+                          <option value="<?=$kat['indeks_id']?>"><?=$kat['domain_nama']?></option>
                         <?php
                           }
                         ?>
@@ -50,15 +50,15 @@
                     
                     <div class="form-group">
                       <label>Indeks Maturity</label>
-                      <input type="number" name="indeks_maturiy" class="form-control" />
+                      <input type="text" name="indeks_maturity" class="form-control" readonly />
                     </div>
                     <div class="form-group">
                       <label>Harapan</label>
-                      <input type="number" name="harapan" value="5" class="form-control" readonly />
+                      <input type="number" name="harapan" class="form-control" readonly />
                     </div>
                     <div class="form-group">
                       <label>GAP</label>
-                      <input type="number" name="gap" class="form-control" />
+                      <input type="text" name="gap" class="form-control" readonly />
                     </div>
                     <div class="form-group">
                       <button type="submit" class="btn btn-primary">Simpan</button>
@@ -77,9 +77,27 @@
     <?php includeTemplate("footer.php"); ?>
     <?php includeTemplate("script.php"); ?>
     <script>
+      function ambilDataDomain() {
+        var data_domain = <?=json_encode($data_domain)?>;
+        var indeks_id = document.getElementsByName("indeks_id")[0].selectedIndex - 1;
+        if(indeks_id >= 0)
+        {
+          document.getElementsByName("indeks_maturity")[0].value = data_domain[indeks_id].indeks_maturity;
+          document.getElementsByName("gap")[0].value = data_domain[indeks_id].gap;
+          document.getElementsByName("harapan")[0].value = 5;
+          hitungGap();
+        }
+        else
+        {
+          document.getElementsByName("indeks_maturity")[0].value = 0;
+          document.getElementsByName("gap")[0].value = 0;
+          document.getElementsByName("harapan")[0].value = 0;
+        }
+        
+      }
       function hitungGap()
       {
-        var im = document.getElementsByName("indeks_maturiy")[0].value;
+        var im = document.getElementsByName("indeks_maturity")[0].value;
         var harapan = 5;
         var gap = 0;
         
@@ -90,7 +108,7 @@
         document.getElementsByName("gap")[0].value = gap;
       }
       
-      document.getElementsByName("indeks_maturiy")[0].addEventListener("change", hitungGap);
+      document.getElementsByName("indeks_id")[0].addEventListener("change", ambilDataDomain);
     </script>
 </body>
 

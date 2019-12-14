@@ -425,4 +425,13 @@ function includeTemplate($file)
 {
   include dirname( dirname( __FILE__ ) ) . '/components/'.$file;
 }
+
+function menuAktif($menu) {
+  $url = explode("/", $_SERVER["REQUEST_URI"]);
+  $result = $url[count($url)-1];
+  if($result == $menu)
+  {
+    echo "class='active'";
+  }
+}
 ?>
