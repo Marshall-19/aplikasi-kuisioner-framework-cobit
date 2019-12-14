@@ -1,7 +1,7 @@
 <?php
   require_once "lib/helper.php";
-  require_once "models/DomainPertanyaan.php";
-  $domain = new DomainPertanyaan();
+  require_once "models/DomainPernyataan.php";
+  $domain = new DomainPernyataan();
 ?>
 <!doctype html>
 <html class="no-js" lang="">
@@ -24,16 +24,17 @@
     <!-- KONTEN AREA-->
     <div class="container">
         <div class="row">
-            <div class="col-xs-12">
-              <div class="sale-statistic-inner notika-shadow mg-tb-30">
+            <?php includeTemplate("sidebar.php"); ?>
+            <div class="col-sm-9 col-xs-12">
+              <div class="sale-statistic-inner">
                 <div class="curved-inner-pro">
                   <div class="curved-ctn">
                     <!-- BAGIAN ISI KONTEN -->
-                  <button class="btn btn-success btn-sm" onclick="window.history.back();">Kembali</button>
-                  <form action="proses_tambah_pertanyaan.php" method="POST">
+                  <h2>Tambah Data Pernyataan</h2>
+                  <form action="proses_tambah_pernyataan.php" method="POST">
                     <div class="form-group">
-                      <label>Isi Pertanyaan</label>
-                      <textarea class="form-control" name="pertanyaan"></textarea>
+                      <label>Isi Pernyataan</label>
+                      <textarea class="form-control" name="pernyataan"></textarea>
                     </div>
                     <div class="form-group">
                       <label>Domain</label>
@@ -53,6 +54,7 @@
                     
                     <div class="form-group">
                       <button type="submit" class="btn btn-primary">Simpan</button>
+                      <button type="button" class="btn btn-success" onclick="window.history.back();">Kembali</button>
                     </div>
                   </form>
                   <!-- EOF BAGIAN ISI KONTEN -->

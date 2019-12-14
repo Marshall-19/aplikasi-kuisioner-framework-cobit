@@ -25,8 +25,9 @@ $indeks_maturity = new IndeksMaturity();
     <!-- KONTEN AREA-->
     <div class="container">
         <div class="row">
-            <div class="col-xs-12">
-              <div class="sale-statistic-inner notika-shadow mg-tb-30">
+            <?php includeTemplate("sidebar.php"); ?>
+            <div class="col-sm-9 col-xs-12">
+              <div class="sale-statistic-inner">
                 <div class="curved-inner-pro">
                   <div class="curved-ctn">
                     <!-- BAGIAN ISI KONTEN -->
@@ -39,7 +40,7 @@ $indeks_maturity = new IndeksMaturity();
                             <tr>
                               <th>No</th>
                               <th>Domain Id</th>
-                              <th>Total Pertanyaan</th>
+                              <th>Total Pernyataan</th>
                               <th>Total Responden</th>
                               <th>Total Nilai</th>
                               <th>Indeks Maturity</th>
@@ -48,7 +49,7 @@ $indeks_maturity = new IndeksMaturity();
                           </thead>
                           <tbody>
                           <?php
-                            // ambil data pertanyaan
+                            // ambil data pernyataan
                             $data_indeks_maturity = $indeks_maturity->ambilData();
                             // menampilkan data
                             foreach($data_indeks_maturity as $no => $im)
@@ -58,7 +59,7 @@ $indeks_maturity = new IndeksMaturity();
                             <tr>
                               <td><?=$no+1?></td>
                               <td><?=$im['domain_nama']?></td>
-                              <td><?=$im['pertanyaan_total']?></td>
+                              <td><?=$im['pernyataan_total']?></td>
                               <td><?=$im['responden_total']?></td>
                               <td><?=$im['nilai_total']?></td>
                               <td><?=$im['indeks_maturity']?></td>

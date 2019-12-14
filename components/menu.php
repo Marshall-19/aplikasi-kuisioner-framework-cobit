@@ -1,6 +1,4 @@
-    <?php
-      require_once "lib/helper.php";
-    ?>
+
     <!-- End Header Top Area -->
     <!-- Mobile Menu start -->
     <div class="mobile-menu-area">
@@ -12,8 +10,8 @@
                             <ul class="mobile-menu-nav">
                               <li <?=menuAktif("beranda.php");?>><a href="beranda.php">Beranda</a></li>
                               <li <?=menuAktif("tampil_responden.php");?>><a href="tampil_responden.php">Data Responden</a></li>
-                              <li <?=menuAktif("tampil_domain_pertanyaan.php");?>><a href="tampil_domain_pertanyaan.php">Data Domain Pertanyaan</a></li>
-                              <li <?=menuAktif("tampil_pertanyaan.php");?>><a href="tampil_pertanyaan.php">Data Pertanyaan</a></li>
+                              <li <?=menuAktif("tampil_domain_pernyataan.php");?>><a href="tampil_domain_pernyataan.php">Data Domain Pernyataan</a></li>
+                              <li <?=menuAktif("tampil_pernyataan.php");?>><a href="tampil_pernyataan.php">Data Pernyataan</a></li>
                               <li <?=menuAktif("tampil_kuisioner.php");?>><a href="tampil_kuisioner.php">Data Kuisioner</a></li>
                               <li <?=menuAktif("tampil_indeks_maturity.php");?>><a href="tampil_indeks_maturity.php">Indeks Maturity</a></li>
                               <li <?=menuAktif("tampil_gap.php");?>><a href="tampil_gap.php">GAP</a></li>
@@ -28,6 +26,7 @@
     </div>
     <!-- Mobile Menu end -->
     <!-- Main Menu area start-->
+<!--
     <div class="main-menu-area mg-tb-40">
         <div class="container">
             <div class="row">
@@ -35,8 +34,8 @@
                   <ul class="nav nav-tabs notika-menu-wrap menu-it-icon-pro">
                     <li <?=menuAktif("beranda.php");?>><a href="beranda.php">Beranda</a></li>
                     <li <?=menuAktif("tampil_responden.php");?>><a href="tampil_responden.php">Data Responden</a></li>
-                    <li <?=menuAktif("tampil_domain_pertanyaan.php");?>><a href="tampil_domain_pertanyaan.php">Data Domain Pertanyaan</a></li>
-                    <li <?=menuAktif("tampil_pertanyaan.php");?>><a href="tampil_pertanyaan.php">Data Pertanyaan</a></li>
+                    <li <?=menuAktif("tampil_domain_pernyataan.php");?>><a href="tampil_domain_pernyataan.php">Data Domain Pernyataan</a></li>
+                    <li <?=menuAktif("tampil_pernyataan.php");?>><a href="tampil_pernyataan.php">Data Pernyataan</a></li>
                     <li <?=menuAktif("tampil_kuisioner.php");?>><a href="tampil_kuisioner.php">Data Kuisioner</a></li>
                     <li <?=menuAktif("tampil_indeks_maturity.php");?>><a href="tampil_indeks_maturity.php">Indeks Maturity</a></li>
                     <li <?=menuAktif("tampil_gap.php");?>><a href="tampil_gap.php">GAP</a></li>
@@ -47,4 +46,6 @@
             </div>
         </div>
     </div>
+-->
     <!-- Main Menu area End-->
+    <br>

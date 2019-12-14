@@ -1,7 +1,7 @@
 <?php
 
-require_once "models/DomainPertanyaan.php";
-$domain = new DomainPertanyaan();
+require_once "models/DomainPernyataan.php";
+$domain = new DomainPernyataan();
 
 // contoh tambah data
 $domain->tambahData([

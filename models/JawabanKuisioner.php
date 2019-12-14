@@ -9,7 +9,7 @@ class JawabanKuisioner extends Models {
     $this->kolomBawaanCrud = [
       "kuisioner_id",
       "skor",
-      "pertanyaan_id",
+      "pernyataan_id",
     ];
     // daftar kolom pada tabel kecuali primary keynya
     //~ $this->view = "data_kuisioner";

@@ -431,7 +431,11 @@ function menuAktif($menu) {
   $result = $url[count($url)-1];
   if($result == $menu)
   {
-    echo "class='active'";
+    echo "class='btn btn-success success-icon-notika waves-effect'";
+  }
+  else
+  {
+    echo "class='btn btn-default btn-icon-notika waves-effect'";
   }
 }
 ?>

@@ -8,8 +8,7 @@ class Kuisioner extends Models {
     $this->primaryKey = "kuisioner_id";
     $this->kolomBawaanCrud = [
       "responden_id",
-      "kuisioner_tgl",
-      "kuisioner_kode",
+      "kuisioner_tgl"
     ];
     // daftar kolom pada tabel kecuali primary keynya
     $this->view = "data_kuisioner";

@@ -1,7 +1,7 @@
 <?php
 require_once "lib/helper.php";
-require_once "models/DomainPertanyaan.php";
-$domain = new DomainPertanyaan();
+require_once "models/DomainPernyataan.php";
+$domain = new DomainPernyataan();
 $domain_id = $_GET['domain_id'];
 $detail_domain = $domain->ambilData($domain_id);
 ?>
@@ -27,14 +27,15 @@ $detail_domain = $domain->ambilData($domain_id);
     <!-- KONTEN AREA-->
     <div class="container">
         <div class="row">
-            <div class="col-xs-12">
-              <div class="sale-statistic-inner notika-shadow mg-tb-30">
+            <?php includeTemplate("sidebar.php"); ?>
+            <div class="col-sm-9 col-xs-12">
+              <div class="sale-statistic-inner">
                 <div class="curved-inner-pro">
                   <div class="curved-ctn">
                     <!-- BAGIAN ISI KONTEN -->
 
-                      <button class="btn btn-success btn-sm" onclick="window.history.back();">Kembali</button>
-                      <form action="proses_edit_domain_pertanyaan.php" method="POST">
+                      <h2>Edit Domain</h2>
+                      <form action="proses_edit_domain_pernyataan.php" method="POST">
                         <input type="hidden" name="domain_id" value="<?=$detail_domain['domain_id']?>" />
                         <div class="form-group">
                           <label>Nama Domain</label>
@@ -47,6 +48,7 @@ $detail_domain = $domain->ambilData($domain_id);
                         
                         <div class="form-group">
                           <button type="submit" class="btn btn-primary">Simpan</button>
+                          <button class="btn btn-success btn-sm" onclick="window.history.back();">Kembali</button>
                         </div>
                       </form>
                       <!-- EOF BAGIAN ISI KONTEN -->

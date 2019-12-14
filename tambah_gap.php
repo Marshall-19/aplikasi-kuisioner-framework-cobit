@@ -24,13 +24,13 @@
     <!-- KONTEN AREA-->
     <div class="container">
         <div class="row">
-            <div class="col-xs-12">
-              <div class="sale-statistic-inner notika-shadow mg-tb-30">
+            <?php includeTemplate("sidebar.php"); ?>
+            <div class="col-sm-9 col-xs-12">
+              <div class="sale-statistic-inner">
                 <div class="curved-inner-pro">
                   <div class="curved-ctn">
                     <!-- BAGIAN ISI KONTEN -->
-                    <h2>Perhitungan Nilai GAP</h2>
-                  <button class="btn btn-success btn-sm" onclick="window.history.back();">Kembali</button>
+                    <h2>Tambah Nilai GAP</h2>
                   <form action="proses_tambah_gap.php" method="POST">
                     <div class="form-group">
                       <label>Id Domain</label>
@@ -62,6 +62,7 @@
                     </div>
                     <div class="form-group">
                       <button type="submit" class="btn btn-primary">Simpan</button>
+                      <button type="button" class="btn btn-success" onclick="window.history.back();">Kembali</button>
                     </div>
                   </form>
                   <!-- EOF BAGIAN ISI KONTEN -->

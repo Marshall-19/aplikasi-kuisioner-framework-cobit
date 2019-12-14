@@ -26,8 +26,9 @@ $kuisioner = new Kuisioner();
     <!-- KONTEN AREA-->
     <div class="container">
         <div class="row">
-            <div class="col-xs-12">
-              <div class="sale-statistic-inner notika-shadow mg-tb-30">
+            <?php includeTemplate("sidebar.php"); ?>
+            <div class="col-sm-9 col-xs-12">
+              <div class="sale-statistic-inner">
                 <div class="curved-inner-pro">
                   <div class="curved-ctn">
                     <!-- BAGIAN ISI KONTEN -->
@@ -35,11 +36,10 @@ $kuisioner = new Kuisioner();
                       <h2>Data Kuisioner</h2>
                       <a href="tambah_kuisioner.php" class="btn btn-primary btn-sm">Tambah Kuisioner Baru</a>
                       <div class="bsc-tbl-st">
-                        <table style="width: 100%;"  class="table table-bordered table-stripped">
+                        <table class="table table-bordered table-stripped">
                           <thead>
                             <tr>
                               <th>No</th>
-                              <th>Kode Kuisioner</th>
                               <th>Tanggal</th>
                               <th>Data Responden</th>
                               <th>Hasil Kuisioner</th>
@@ -55,7 +55,7 @@ $kuisioner = new Kuisioner();
                             {
                               $harapan = 5;
                               $gap = 0;
-                              $im = $pet['kuisioner_skor'] / ($pet['kuisioner_total_pertanyaan']*$pet['kuisioner_total_responden']);
+                              $im = $pet['kuisioner_skor'] / ($pet['kuisioner_total_pernyataan']*$pet['kuisioner_total_responden']);
                               $keterangan_im = "";
                               if($im >= 0 && $im <= 0.49)
                               {
@@ -86,13 +86,12 @@ $kuisioner = new Kuisioner();
                           
                             <tr>
                               <td><?=$no+1?></td>
-                              <td><?=$pet['kuisioner_kode']?></td>
                               <td><?=TanggalIndo($pet['kuisioner_tgl'])?></td>
                               <td>
                                 <table style="width: 100%;"  class="table table-bordered">
                                   <tr>
                                     <td>Nama</td>
-                                    <td><?=$pet['responden_nama']?></td>
+                                    <td><?=$pet['responden_no']?></td>
                                   </tr>
                                   <tr>
                                     <td>Jenis Kelamin</td>
@@ -123,8 +122,8 @@ $kuisioner = new Kuisioner();
                                     <td><?=$pet['kuisioner_skor']?></td>
                                   </tr>
                                   <tr>
-                                    <td>Jumlah Pertanyaan</td>
-                                    <td><?=$pet['kuisioner_total_pertanyaan']?></td>
+                                    <td>Jumlah Pernyataan</td>
+                                    <td><?=$pet['kuisioner_total_pernyataan']?></td>
                                   </tr>
                                   <tr>
                                     <td>Jumlah Responden</td>

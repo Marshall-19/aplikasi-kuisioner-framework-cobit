@@ -1,9 +1,9 @@
 <?php
   require_once "lib/helper.php";
-  require_once "models/DomainPertanyaan.php";
-  require_once "models/Pertanyaan.php";
-  $domain = new DomainPertanyaan();
-  $pertanyaan = new Pertanyaan();
+  require_once "models/DomainPernyataan.php";
+  require_once "models/Pernyataan.php";
+  $domain = new DomainPernyataan();
+  $pernyataan = new Pernyataan();
 ?>
 <!doctype html>
 <html class="no-js" lang="">
@@ -26,21 +26,18 @@
     <!-- KONTEN AREA-->
     <div class="container">
         <div class="row">
-            <div class="col-xs-12">
-              <div class="sale-statistic-inner notika-shadow mg-tb-30">
+            <?php includeTemplate("sidebar.php"); ?>
+            <div class="col-sm-9 col-xs-12">
+              <div class="sale-statistic-inner">
                 <div class="curved-inner-pro">
                   <div class="curved-ctn">
                     <!-- BAGIAN ISI KONTEN -->
-
+                    <h2>Tambah Data Kuisioner</h2>
                     <form action="proses_tambah_kuisioner.php" method="POST">
-                    <div class="form-group">
-                      <label>Kode Kuisioner</label>
-                      <input type="text" name="kuisioner_kode" class="form-control" />
-                    </div>
                     
                     <div class="form-group">
-                      <label>Nama Responden</label>
-                      <input type="text" name="responden_nama" class="form-control" />
+                      <label>Nomor Responden</label>
+                      <input type="text" name="responden_no" class="form-control" />
                     </div>
                     
                     <div class="form-group">
@@ -99,30 +96,30 @@
                           </thead>
                           <tbody>
                             <?php
-                              $data_pertanyaan = $pertanyaan->ambilDataDenganKondisi(["domain_id" => $kat['domain_id']]);
-                              foreach($data_pertanyaan as $no => $pet)
+                              $data_pernyataan = $pernyataan->ambilDataDenganKondisi(["domain_id" => $kat['domain_id']]);
+                              foreach($data_pernyataan as $no => $pet)
                               {
                             ?>
                               <tr>
                                 <td><?=$no+1?></td>
                                 <td>
-                                  <input type="hidden" name="pertanyaan_id[]" value="<?=$pet['pertanyaan_id']?>" />
-                                  <?=$pet['pertanyaan']?>
+                                  <input type="hidden" name="pernyataan_id[]" value="<?=$pet['pernyataan_id']?>" />
+                                  <?=$pet['pernyataan']?>
                                 </td>
                                 <td>
-                                  <input type="radio" name="skor<?=$pet['pertanyaan_id']?>" value="5" />
+                                  <input type="radio" name="skor<?=$pet['pernyataan_id']?>" value="5" />
                                 </td>
                                 <td>
-                                  <input type="radio" name="skor<?=$pet['pertanyaan_id']?>" value="4" />
+                                  <input type="radio" name="skor<?=$pet['pernyataan_id']?>" value="4" />
                                 </td>
                                 <td>
-                                  <input type="radio" name="skor<?=$pet['pertanyaan_id']?>" value="3" />
+                                  <input type="radio" name="skor<?=$pet['pernyataan_id']?>" value="3" />
                                 </td>
                                 <td>
-                                  <input type="radio" name="skor<?=$pet['pertanyaan_id']?>" value="2" />
+                                  <input type="radio" name="skor<?=$pet['pernyataan_id']?>" value="2" />
                                 </td>
                                 <td>
-                                  <input type="radio" name="skor<?=$pet['pertanyaan_id']?>" value="1" />  
+                                  <input type="radio" name="skor<?=$pet['pernyataan_id']?>" value="1" />  
                                 </td>
                               </tr>
                             <?php
@@ -136,6 +133,7 @@
                     
                     <button type="submit" class="btn btn-primary btn-sm">Simpan</button>
                     <button type="reset" class="btn btn-danger btn-sm">Reset</button>
+                    <button type="button" class="btn btn-success" onclick="window.history.back();">Kembali</button>
                     </form>
                     
                     <!-- EOF BAGIAN ISI KONTEN -->

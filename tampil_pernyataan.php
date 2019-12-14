@@ -1,7 +1,7 @@
 <?php
 require_once "lib/helper.php";
-require_once "models/Pertanyaan.php";
-$pertanyaan = new Pertanyaan();
+require_once "models/Pernyataan.php";
+$pernyataan = new Pernyataan();
 ?>
 <!doctype html>
 <html class="no-js" lang="">
@@ -25,40 +25,41 @@ $pertanyaan = new Pertanyaan();
     <!-- KONTEN AREA-->
     <div class="container">
         <div class="row">
-            <div class="col-xs-12">
-              <div class="sale-statistic-inner notika-shadow mg-tb-30">
+            <?php includeTemplate("sidebar.php"); ?>
+            <div class="col-sm-9 col-xs-12">
+              <div class="sale-statistic-inner">
                 <div class="curved-inner-pro">
                   <div class="curved-ctn">
                     <!-- BAGIAN ISI KONTEN -->
                     <div class="normal-table-list">
                       <h2>Data Pernyataan</h2>
-                      <a href="tambah_pertanyaan.php" class="btn btn-primary btn-sm">Tambah Pertanyaan Baru</a>
+                      <a href="tambah_pernyataan.php" class="btn btn-primary btn-sm">Tambah Pernyataan Baru</a>
                       <div class="bsc-tbl-st">
                         <table style="width: 100%;"  class="table table-bordered table-stripped">
                           <thead>
                             <tr>
                               <th>No</th>
-                              <th>Isi Pertanyaan</th>
+                              <th>Isi Pernyataan</th>
                               <th>Domain</th>
                               <th>Aksi</th>
                             </tr>
                           </thead>
                           <tbody>
                           <?php
-                            // ambil data pertanyaan
-                            $data_pertanyaan = $pertanyaan->ambilData();
+                            // ambil data pernyataan
+                            $data_pernyataan = $pernyataan->ambilData();
                             // menampilkan data
-                            foreach($data_pertanyaan as $no => $pet)
+                            foreach($data_pernyataan as $no => $pet)
                             {
                           ?>
                           
                             <tr>
                               <td><?=$no+1?></td>
-                              <td><?=$pet['pertanyaan']?></td>
+                              <td><?=$pet['pernyataan']?></td>
                               <td><?=$pet['domain_nama']?></td>
                               <td>
-                                <a href="edit_pertanyaan.php?pertanyaan_id=<?=$pet['pertanyaan_id']?>" class="btn btn-info btn-sm">Edit</a>
-                                <a href="proses_hapus_pertanyaan.php?pertanyaan_id=<?=$pet['pertanyaan_id']?>" class="btn btn-danger btn-sm">Hapus</a>
+                                <a href="edit_pernyataan.php?pernyataan_id=<?=$pet['pernyataan_id']?>" class="btn btn-info btn-sm">Edit</a>
+                                <a href="proses_hapus_pernyataan.php?pernyataan_id=<?=$pet['pernyataan_id']?>" class="btn btn-danger btn-sm">Hapus</a>
                               </td>
                             </tr>
                           

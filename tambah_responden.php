@@ -22,54 +22,56 @@
     <!-- KONTEN AREA-->
     <div class="container">
         <div class="row">
-            <div class="col-xs-12">
-              <div class="sale-statistic-inner notika-shadow mg-tb-30">
+            <?php includeTemplate("sidebar.php"); ?>
+            <div class="col-sm-9 col-xs-12">
+              <div class="sale-statistic-inner">
                 <div class="curved-inner-pro">
                   <div class="curved-ctn">
                     <!-- BAGIAN ISI KONTEN -->
-                  <button class="btn btn-success btn-sm" onclick="window.history.back();">Kembali</button>
+                  <h2>Tambah Data Responden</h2>
                   <form action="proses_tambah_responden.php" method="POST">
                     <div class="form-group">
-                      <label>Nama Responden</label>
-                      <input type="text" name="responden_nama" class="form-control" />
+                      <label>Nomor Responden</label>
+                      <input type="text" name="responden_no" class="form-control" />
                     </div>
                     
                     <div class="form-group">
                       <label>Usia</label>
-                      <input type="radio" name="responden_usia" class="form-control" value="17 - 25 Tahun" /> 17 - 25 Tahun
-                      <input type="radio" name="responden_usia" class="form-control" value="26 - 45 Tahun" /> 26 - 45 Tahun
-                      <input type="radio" name="responden_usia" class="form-control" value="> 46 Tahun" /> > 46 Tahun
+                      <input type="radio" name="responden_usia"  value="17 - 25 Tahun" /> 17 - 25 Tahun
+                      <input type="radio" name="responden_usia"  value="26 - 45 Tahun" /> 26 - 45 Tahun
+                      <input type="radio" name="responden_usia"  value="> 46 Tahun" /> > 46 Tahun
                     </div>
                     
                     <div class="form-group">
                       <label>Jenis Kelamin</label>
-                      <input type="radio" name="responden_jk" class="form-control" value="Pria" /> Pria
-                      <input type="radio" name="responden_jk" class="form-control" value="Wanita" /> Wanita
+                      <input type="radio" name="responden_jk"  value="Pria" /> Pria
+                      <input type="radio" name="responden_jk"  value="Wanita" /> Wanita
                     </div>
                     
                     <div class="form-group">
                       <label>Pendidikan Terakhir</label>
-                      <input type="radio" name="responden_pendidikan" class="form-control" value="SMA" /> SMA
-                      <input type="radio" name="responden_pendidikan" class="form-control" value="D3" /> D3
-                      <input type="radio" name="responden_pendidikan" class="form-control" value="S1" /> S1
-                      <input type="radio" name="responden_pendidikan" class="form-control" value="S2" /> S2
+                      <input type="radio" name="responden_pendidikan"  value="SMA" /> SMA
+                      <input type="radio" name="responden_pendidikan"  value="D3" /> D3
+                      <input type="radio" name="responden_pendidikan"  value="S1" /> S1
+                      <input type="radio" name="responden_pendidikan"  value="S2" /> S2
                     </div>
                     
                     <div class="form-group">
                       <label>Masa Kerja</label>
-                      <input type="radio" name="responden_masa_kerja" class="form-control" value="0 - 5 Tahun" /> 0 - 5 Tahun
-                      <input type="radio" name="responden_masa_kerja" class="form-control" value="6 - 10 Tahun" /> 6 - 10 Tahun
-                      <input type="radio" name="responden_masa_kerja" class="form-control" value="> 10 Tahun" /> > 10 Tahun
+                      <input type="radio" name="responden_masa_kerja"  value="0 - 5 Tahun" /> 0 - 5 Tahun
+                      <input type="radio" name="responden_masa_kerja"  value="6 - 10 Tahun" /> 6 - 10 Tahun
+                      <input type="radio" name="responden_masa_kerja"  value="> 10 Tahun" /> > 10 Tahun
                     </div>
                     
                     <div class="form-group">
                       <label>Status Sosial</label>
-                      <input type="radio" name="responden_status_sosial" class="form-control" value="Menikah" /> Menikah
-                      <input type="radio" name="responden_status_sosial" class="form-control" value="Belum Menikah" /> Belum Menikah
+                      <input type="radio" name="responden_status_sosial"  value="Menikah" /> Menikah
+                      <input type="radio" name="responden_status_sosial"  value="Belum Menikah" /> Belum Menikah
                     </div>
                     
                     <div class="form-group">
                       <button type="submit" class="btn btn-primary">Simpan</button>
+                      <button type="button" class="btn btn-success" onclick="window.history.back();">Kembali</button>
                     </div>
                   </form>
                   

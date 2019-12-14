@@ -2,7 +2,7 @@
 require_once "models/Responden.php";
 $responden = new Responden();
 $responden->editData($_POST['responden_id'],[
-  "responden_nama" => $_POST['responden_nama'],
+  "responden_no" => $_POST['responden_no'],
   "responden_usia" => $_POST['responden_usia'],
   "responden_jk" => $_POST['responden_jk'],
   "responden_pendidikan" => $_POST['responden_pendidikan'],

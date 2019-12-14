@@ -22,13 +22,14 @@
     <!-- KONTEN AREA-->
     <div class="container">
         <div class="row">
-            <div class="col-xs-12">
-              <div class="sale-statistic-inner notika-shadow mg-tb-30">
+            <?php includeTemplate("sidebar.php"); ?>
+            <div class="col-sm-9 col-xs-12">
+              <div class="sale-statistic-inner">
                 <div class="curved-inner-pro">
                   <div class="curved-ctn">
                     <!-- BAGIAN ISI KONTEN -->
-                    <button class="btn btn-success btn-sm" onclick="window.history.back();">Kembali</button>
-                    <form action="proses_tambah_domain_pertanyaan.php" method="POST">
+                    <h2>Tambah Domain</h2>
+                    <form action="proses_tambah_domain_pernyataan.php" method="POST">
                       <div class="form-group">
                         <label>Nama Domain</label>
                         <input type="text" name="domain_nama" class="form-control" />
@@ -40,6 +41,7 @@
                       
                       <div class="form-group">
                         <button type="submit" class="btn btn-primary">Simpan</button>
+                        <button type="button" class="btn btn-success" onclick="window.history.back();">Kembali</button>
                       </div>
                       </form>
                       <!-- EOF BAGIAN ISI KONTEN -->

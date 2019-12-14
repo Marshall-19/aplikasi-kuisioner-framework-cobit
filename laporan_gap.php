@@ -25,14 +25,15 @@ $gap = new Gap();
     <!-- KONTEN AREA-->
     <div class="container">
         <div class="row">
-            <div class="col-xs-12">
-              <div class="sale-statistic-inner notika-shadow mg-tb-30">
+           <?php includeTemplate("sidebar.php"); ?>
+            <div class="col-sm-9 col-xs-12">
+              <div class="sale-statistic-inner">
                 <div class="curved-inner-pro">
                   <div class="curved-ctn">
                     <!-- BAGIAN ISI KONTEN -->
                     <div class="normal-table-list">
                       <h2>Laporan GAP</h2>
-                      <a href="tambah_gap.php" class="btn btn-primary btn-sm">Tambah Gap Baru</a>
+                      <a href="cetak_laporan_gap.php" class="btn btn-primary btn-sm">Cetak</a>
                       <div class="bsc-tbl-st">
                         <table style="width: 100%;"  class="table table-bordered table-stripped">
                           <thead>
@@ -45,7 +46,7 @@ $gap = new Gap();
                           </thead>
                           <tbody>
                           <?php
-                            // ambil data pertanyaan
+                            // ambil data pernyataan
                             $data_gap = $gap->ambilData();
                             // menampilkan data
                             foreach($data_gap as $no => $im)

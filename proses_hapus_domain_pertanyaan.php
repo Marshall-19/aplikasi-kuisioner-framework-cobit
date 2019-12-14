@@ -1,6 +1,6 @@
 <?php
-require_once "models/DomainPertanyaan.php";
-$domain = new DomainPertanyaan();
+require_once "models/DomainPernyataan.php";
+$domain = new DomainPernyataan();
 $domain->hapusData($_GET['domain_id']);
-header("Location: tampil_domain_pertanyaan.php");
+header("Location: tampil_domain_pernyataan.php");
 ?>

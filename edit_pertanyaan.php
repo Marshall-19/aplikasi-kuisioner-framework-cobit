@@ -1,12 +1,12 @@
 <?php
   require_once "lib/helper.php";
-  require_once "models/DomainPertanyaan.php";
-  require_once "models/Pertanyaan.php";
-  $domain = new DomainPertanyaan();
+  require_once "models/DomainPernyataan.php";
+  require_once "models/Pernyataan.php";
+  $domain = new DomainPernyataan();
   $data_domain = $domain->ambilData();
   
-  $pertanyaan = new Pertanyaan();
-  $detail_domain = $pertanyaan->ambilData($_GET['pertanyaan_id']);
+  $pernyataan = new Pernyataan();
+  $detail_domain = $pernyataan->ambilData($_GET['pernyataan_id']);
 ?>
 <!doctype html>
 <html class="no-js" lang="">
@@ -29,17 +29,18 @@
     <!-- KONTEN AREA-->
     <div class="container">
         <div class="row">
-            <div class="col-xs-12">
-              <div class="sale-statistic-inner notika-shadow mg-tb-30">
+            <?php includeTemplate("sidebar.php"); ?>
+            <div class="col-sm-9 col-xs-12">
+              <div class="sale-statistic-inner">
                 <div class="curved-inner-pro">
                   <div class="curved-ctn">
                     <!-- BAGIAN ISI KONTEN -->
-                    <button class="btn btn-success btn-sm" onclick="window.history.back();">Kembali</button>
-                    <form action="proses_edit_pertanyaan.php" method="POST">
-                      <input type="hidden" name="pertanyaan_id" value="<?=$detail_domain['pertanyaan_id']?>" />
+                    <h2>Edit Pernyataan</h2>
+                    <form action="proses_edit_pernyataan.php" method="POST">
+                      <input type="hidden" name="pernyataan_id" value="<?=$detail_domain['pernyataan_id']?>" />
                       <div class="form-group">
-                        <label>Isi Pertanyaan</label>
-                        <textarea class="form-control" name="pertanyaan"><?=$detail_domain['pertanyaan']?></textarea>
+                        <label>Isi Pernyataan</label>
+                        <textarea class="form-control" name="pernyataan"><?=$detail_domain['pernyataan']?></textarea>
                       </div>
                       <div class="form-group">
                         <label>Domain</label>
@@ -62,6 +63,7 @@
                       
                       <div class="form-group">
                         <button type="submit" class="btn btn-primary">Simpan</button>
+                        <button class="btn btn-success btn-sm" onclick="window.history.back();">Kembali</button>
                       </div>
                     </form>
                     <!-- EOF BAGIAN ISI KONTEN -->

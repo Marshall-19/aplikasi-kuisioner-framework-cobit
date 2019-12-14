@@ -1,7 +1,7 @@
 <?php
 require_once "lib/helper.php";
-require_once "models/DomainPertanyaan.php";
-$domain = new DomainPertanyaan();
+require_once "models/DomainPernyataan.php";
+$domain = new DomainPernyataan();
 ?>
 <!doctype html>
 <html class="no-js" lang="">
@@ -25,14 +25,15 @@ $domain = new DomainPertanyaan();
     <!-- KONTEN AREA-->
     <div class="container">
         <div class="row">
-            <div class="col-xs-12">
-              <div class="sale-statistic-inner notika-shadow mg-tb-30">
+            <?php includeTemplate("sidebar.php"); ?>
+            <div class="col-sm-9 col-xs-12">
+              <div class="sale-statistic-inner">
                 <div class="curved-inner-pro">
                   <div class="curved-ctn">
                     <!-- BAGIAN ISI KONTEN -->
                     <div class="normal-table-list">
                       <h2>Data Domain</h2>
-                      <a href="tambah_domain_pertanyaan.php" class="btn btn-primary btn-sm">Tambah Domain Baru</a>
+                      <a href="tambah_domain_pernyataan.php" class="btn btn-primary btn-sm">Tambah Domain Baru</a>
                       <div class="bsc-tbl-st">
                       <table style="width: 100%;"  class="table table-bordered table-stripped">
                         <thead>
@@ -57,8 +58,8 @@ $domain = new DomainPertanyaan();
                             <td><?=$kat['domain_nama']?></td>
                             <td><?=$kat['domain_keterangan']?></td>
                             <td>
-                              <a href="edit_domain_pertanyaan.php?domain_id=<?=$kat['domain_id']?>" class="btn btn-info btn-sm">Edit</a>
-                              <a href="proses_hapus_domain_pertanyaan.php?domain_id=<?=$kat['domain_id']?>" class="btn btn-danger btn-sm">Hapus</a>
+                              <a href="edit_domain_pernyataan.php?domain_id=<?=$kat['domain_id']?>" class="btn btn-info btn-sm">Edit</a>
+                              <a href="proses_hapus_domain_pernyataan.php?domain_id=<?=$kat['domain_id']?>" class="btn btn-danger btn-sm">Hapus</a>
                             </td>
                           </tr>
                         

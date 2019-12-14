@@ -25,7 +25,8 @@ $responden = new Responden();
     <!-- KONTEN AREA-->
     <div class="container">
         <div class="row">
-            <div class="col-xs-12">
+            <?php includeTemplate("sidebar.php"); ?>
+            <div class="col-sm-9 col-xs-12">
               <div class="sale-statistic-inner">
                 <div class="curved-inner-pro">
                   <div class="curved-ctn">
@@ -34,7 +35,7 @@ $responden = new Responden();
                       <h2>Data Responden</h2>
                       <a href="tambah_responden.php" class="btn btn-primary btn-sm">Tambah Responden Baru</a>
                       <div class="bsc-tbl-st">
-                        <table class="table table-bordered table-stripped">
+                        <table style="width: 100%;" class="table table-bordered table-stripped">
                           <thead>
                             <tr>
                               <th>No</th>
@@ -58,7 +59,7 @@ $responden = new Responden();
                           
                             <tr>
                               <td><?=$no+1?></td>
-                              <td><?=$pet['responden_nama']?></td>
+                              <td><?=$pet['responden_no']?></td>
                               <td><?=$pet['responden_jk']?></td>
                               <td><?=$pet['responden_usia']?></td>
                               <td><?=$pet['responden_pendidikan']?></td>
