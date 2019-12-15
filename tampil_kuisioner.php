@@ -41,8 +41,8 @@ $kuisioner = new Kuisioner();
                             <tr>
                               <th>No</th>
                               <th>Tanggal</th>
-                              <th>Data Responden</th>
-                              <th>Hasil Kuisioner</th>
+                              <th>No Responden</th>
+                              <th>Total Nilai</th>
                               <th>Aksi</th>
                             </tr>
                           </thead>
@@ -87,62 +87,8 @@ $kuisioner = new Kuisioner();
                             <tr>
                               <td><?=$no+1?></td>
                               <td><?=TanggalIndo($pet['kuisioner_tgl'])?></td>
-                              <td>
-                                <table style="width: 100%;"  class="table table-bordered">
-                                  <tr>
-                                    <td>Nama</td>
-                                    <td><?=$pet['responden_no']?></td>
-                                  </tr>
-                                  <tr>
-                                    <td>Jenis Kelamin</td>
-                                    <td><?=$pet['responden_jk']?></td>
-                                  </tr>
-                                  <tr>
-                                    <td>Usia</td>
-                                    <td><?=$pet['responden_usia']?></td>
-                                  </tr>
-                                  <tr>
-                                    <td>Pendidikan</td>
-                                    <td><?=$pet['responden_pendidikan']?></td>
-                                  </tr>
-                                  <tr>
-                                    <td>Masa Kerja</td>
-                                    <td><?=$pet['responden_masa_kerja']?></td>
-                                  </tr>
-                                  <tr>
-                                    <td>Status Sosial</td>
-                                    <td><?=$pet['responden_status_sosial']?></td>
-                                  </tr>
-                                </table>
-                              </td>
-                              <td>
-                                <table style="width: 100%;"  class="table table-bordered">
-                                  <tr>
-                                    <td>Skor</td>
-                                    <td><?=$pet['kuisioner_skor']?></td>
-                                  </tr>
-                                  <tr>
-                                    <td>Jumlah Pernyataan</td>
-                                    <td><?=$pet['kuisioner_total_pernyataan']?></td>
-                                  </tr>
-                                  <tr>
-                                    <td>Jumlah Responden</td>
-                                    <td><?=$pet['kuisioner_total_responden']?></td>
-                                  </tr>
-                                  <tr>
-                                    <td>Indeks Maturity / Keterangan</td>
-                                    <td><?=$im." / ".$keterangan_im?></td>
-                                  </tr>
-                                  <tr>
-                                    <td>Harapan</td>
-                                    <td><?=$harapan?></td>
-                                  </tr>
-                                  <tr>
-                                    <td>GAP</td>
-                                    <td><?=$gap?></td>
-                                  </tr>
-                                </table>
-                              </td>
+                              <td><?=$pet['responden_no']?></td>
+                              <td><?=$pet['kuisioner_skor']?></td>
                               <td>
                                 <a href="proses_hapus_kuisioner.php?kuisioner_id=<?=$pet['kuisioner_id']?>" class="btn btn-danger btn-sm">Hapus</a>
                               </td>
