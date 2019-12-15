@@ -262,7 +262,59 @@ INSERT INTO `tbl_jawaban_kuisioner` (`jawaban_id`, `kuisioner_id`, `skor`, `pern
 (205,	8,	1,	24),
 (206,	8,	3,	25),
 (207,	8,	2,	26),
-(208,	8,	1,	27);
+(208,	8,	1,	27),
+(209,	9,	1,	2),
+(210,	9,	3,	3),
+(211,	9,	1,	4),
+(212,	9,	1,	5),
+(213,	9,	2,	6),
+(214,	9,	5,	7),
+(215,	9,	4,	8),
+(216,	9,	5,	9),
+(217,	9,	3,	10),
+(218,	9,	5,	11),
+(219,	9,	1,	12),
+(220,	9,	1,	13),
+(221,	9,	5,	14),
+(222,	9,	1,	15),
+(223,	9,	5,	16),
+(224,	9,	5,	17),
+(225,	9,	2,	18),
+(226,	9,	4,	19),
+(227,	9,	3,	20),
+(228,	9,	1,	21),
+(229,	9,	4,	22),
+(230,	9,	1,	23),
+(231,	9,	4,	24),
+(232,	9,	4,	25),
+(233,	9,	2,	26),
+(234,	9,	5,	27),
+(235,	10,	1,	2),
+(236,	10,	3,	3),
+(237,	10,	1,	4),
+(238,	10,	1,	5),
+(239,	10,	2,	6),
+(240,	10,	5,	7),
+(241,	10,	4,	8),
+(242,	10,	5,	9),
+(243,	10,	3,	10),
+(244,	10,	5,	11),
+(245,	10,	1,	12),
+(246,	10,	1,	13),
+(247,	10,	5,	14),
+(248,	10,	1,	15),
+(249,	10,	5,	16),
+(250,	10,	5,	17),
+(251,	10,	2,	18),
+(252,	10,	4,	19),
+(253,	10,	3,	20),
+(254,	10,	1,	21),
+(255,	10,	4,	22),
+(256,	10,	1,	23),
+(257,	10,	4,	24),
+(258,	10,	4,	25),
+(259,	10,	2,	26),
+(260,	10,	5,	27);
 
 DROP TABLE IF EXISTS `tbl_kuisioner`;
 CREATE TABLE `tbl_kuisioner` (
@@ -282,7 +334,21 @@ INSERT INTO `tbl_kuisioner` (`kuisioner_id`, `kuisioner_tgl`, `kuisioner_kode`, 
 (5,	'2019-12-11',	'K0001',	7),
 (6,	'2019-12-11',	'K0001',	8),
 (7,	'2019-12-11',	'K0001',	9),
-(8,	'2019-12-11',	'K0001',	10);
+(8,	'2019-12-11',	'K0001',	10),
+(9,	'2019-12-15',	NULL,	11),
+(10,	'2019-12-15',	NULL,	12);
+
+DROP TABLE IF EXISTS `tbl_pengguna`;
+CREATE TABLE `tbl_pengguna` (
+  `pengguna_id` int(11) NOT NULL AUTO_INCREMENT,
+  `pengguna_username` varchar(20) NOT NULL,
+  `pengguna_password` varchar(20) NOT NULL,
+  `pengguna_email` varchar(50) NOT NULL,
+  PRIMARY KEY (`pengguna_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `tbl_pengguna` (`pengguna_id`, `pengguna_username`, `pengguna_password`, `pengguna_email`) VALUES
+(2,	'admin',	'admin',	'admin@mail.com');
 
 DROP TABLE IF EXISTS `tbl_pernyataan`;
 CREATE TABLE `tbl_pernyataan` (
@@ -343,7 +409,9 @@ INSERT INTO `tbl_responden` (`responden_id`, `responden_no`, `responden_usia`, `
 (7,	'Autem lorem ex volup',	'26 - 45 Tahun',	'Pria',	'S2',	'> 10 Tahun',	'Belum Menikah'),
 (8,	'Culpa aspernatur hic',	'> 46 Tahun',	'Wanita',	'S1',	'> 10 Tahun',	'Belum Menikah'),
 (9,	'Atque illo nisi pari',	'26 - 45 Tahun',	'Wanita',	'D3',	'> 10 Tahun',	'Belum Menikah'),
-(10,	'Temporibus in nihil ',	'17 - 25 Tahun',	'Wanita',	'S2',	'6 - 10 Tahun',	'Menikah');
+(10,	'Temporibus in nihil ',	'17 - 25 Tahun',	'Wanita',	'S2',	'6 - 10 Tahun',	'Menikah'),
+(11,	'Amet commodo occaec',	'> 46 Tahun',	'Wanita',	'S1',	'0 - 5 Tahun',	'Belum Menikah'),
+(12,	'Amet commodo occaec',	'> 46 Tahun',	'Wanita',	'S1',	'0 - 5 Tahun',	'Belum Menikah');
 
 DROP TABLE IF EXISTS `data_gap`;
 CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `data_gap` AS select `tbl_domain`.`domain_nama` AS `domain_nama`,`tbl_domain`.`domain_keterangan` AS `domain_keterangan`,`tbl_indeks_maturity`.`indeks_id` AS `indeks_id`,`tbl_indeks_maturity`.`domain_id` AS `domain_id`,`tbl_indeks_maturity`.`pernyataan_total` AS `pernyataan_total`,`tbl_indeks_maturity`.`responden_total` AS `responden_total`,`tbl_indeks_maturity`.`nilai_total` AS `nilai_total`,`tbl_indeks_maturity`.`indeks_maturity` AS `indeks_maturity`,`tbl_indeks_maturity`.`keterangan` AS `keterangan`,`tbl_gap`.`harapan` AS `harapan`,`tbl_gap`.`gap` AS `gap`,`tbl_gap`.`gap_id` AS `gap_id` from ((`tbl_indeks_maturity` join `tbl_domain` on(`tbl_indeks_maturity`.`domain_id` = `tbl_domain`.`domain_id`)) join `tbl_gap` on(`tbl_gap`.`indeks_id` = `tbl_indeks_maturity`.`indeks_id`));
@@ -357,4 +425,4 @@ CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `data_kuisioner` AS select 
 DROP TABLE IF EXISTS `data_pernyataan`;
 CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `data_pernyataan` AS select `tbl_pernyataan`.`pernyataan_id` AS `pernyataan_id`,`tbl_pernyataan`.`pernyataan` AS `pernyataan`,`tbl_pernyataan`.`domain_id` AS `domain_id`,`tbl_domain`.`domain_nama` AS `domain_nama`,`tbl_domain`.`domain_keterangan` AS `domain_keterangan` from (`tbl_pernyataan` join `tbl_domain` on(`tbl_pernyataan`.`domain_id` = `tbl_domain`.`domain_id`));
 
--- 2019-12-14 14:55:36
+-- 2019-12-15 13:47:59

@@ -1,7 +1,10 @@
 <?php
+session_start();
+require_once "lib/helper.php";
+cekLogin();
 require_once "models/DomainPernyataan.php";
 $domain = new DomainPernyataan();
-$domain->tambahData([
+$domain->editData($_POST['domain_id'], [
   "domain_nama" => $_POST['domain_nama'],
   "domain_keterangan" => $_POST['domain_keterangan'],
 ]);

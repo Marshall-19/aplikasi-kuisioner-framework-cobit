@@ -2,14 +2,14 @@
 session_start();
 require_once "lib/helper.php";
 cekLogin();
-require_once "models/Gap.php";
-$gap = new Gap();
+require_once "models/Pengguna.php";
+$pengguna = new Pengguna();
 ?>
 <!doctype html>
 <html class="no-js" lang="">
 
 <head>
-  <title>Laporan GAP</title>
+  <title>Data Pengguna</title>
   <?php includeTemplate("head.php"); ?>
   <style>
     .container {
@@ -20,37 +20,48 @@ $gap = new Gap();
 </head>
 
 <body>
+    
+    <?php includeTemplate("header.php"); ?>
+    <?php includeTemplate("menu.php"); ?>
+    
     <!-- KONTEN AREA-->
     <div class="container">
         <div class="row">
-            <div class="col-xs-12">
+            <?php includeTemplate("sidebar.php"); ?>
+            <div class="col-sm-9 col-xs-12">
+              <div class="sale-statistic-inner">
+                <div class="curved-inner-pro">
+                  <div class="curved-ctn">
                     <!-- BAGIAN ISI KONTEN -->
                     <div class="normal-table-list">
-                      <h2>Laporan GAP</h2>
+                      <h2>Data Pengguna</h2>
+                      <a href="tambah_pengguna.php" class="btn btn-primary btn-sm">Tambah Pengguna Baru</a>
                       <div class="bsc-tbl-st">
                         <table style="width: 100%;"  class="table table-bordered table-stripped">
                           <thead>
                             <tr>
                               <th>No</th>
-                              <th>Domain Id</th>
-                              <th>Gap</th>
-                              <th>Harapan</th>
+                              <th>Username</th>
+                              <th>Email</th>
+                              <th>Aksi</th>
                             </tr>
                           </thead>
                           <tbody>
                           <?php
                             // ambil data pernyataan
-                            $data_gap = $gap->ambilData();
+                            $data_pengguna = $pengguna->ambilData();
                             // menampilkan data
-                            foreach($data_gap as $no => $im)
+                            foreach($data_pengguna as $no => $im)
                             {
                           ?>
                           
                             <tr>
                               <td><?=$no+1?></td>
-                              <td><?=$im['domain_nama']?></td>
-                              <td><?=$im['gap']?></td>
-                              <td><?=$im['harapan']?></td>
+                              <td><?=$im['pengguna_username']?></td>
+                              <td><?=$im['pengguna_email']?></td>
+                              <td>
+                                <a href="proses_hapus_pengguna.php?pengguna_id=<?=$im['pengguna_id']?>" class="btn btn-danger btn-sm">Hapus</a>
+                              </td>
                             </tr>
                           
                         <?php
@@ -61,15 +72,17 @@ $gap = new Gap();
                     </div>
                   </div>
                   <!-- EOF BAGIAN ISI KONTEN -->
+                  </div>
+                </div>
+              </div>
             </div>
-            
         </div>
     </div>
     <!-- END KONTEN AREA-->
+    
+    <?php includeTemplate("footer.php"); ?>
     <?php includeTemplate("script.php"); ?>
-    <script>
-      window.print();
-    </script>
+    
 </body>
 
 </html>

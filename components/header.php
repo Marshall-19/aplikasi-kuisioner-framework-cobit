@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-xs-12 text-center">
                 <div class="logo-area">
-                    <a href="#"><img src="assets/img/logo/logo.png" alt="" /></a>
+                    <a href="#"><img src="assets/img/logo/logo.png" alt="" style="visibility: hidden;" /></a>
                 </div>
             </div>
         </div>

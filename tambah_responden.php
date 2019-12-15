@@ -1,5 +1,7 @@
 <?php
-  require_once "lib/helper.php";
+  session_start();
+require_once "lib/helper.php";
+cekLogin();
 ?>
 <!doctype html>
 <html class="no-js" lang="">

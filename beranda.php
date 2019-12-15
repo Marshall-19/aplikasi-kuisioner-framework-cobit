@@ -1,5 +1,7 @@
 <?php
+  session_start();
   require_once "lib/helper.php";
+  cekLogin();
   require_once "models/IndeksMaturity.php";
   $domain = new IndeksMaturity();
 ?>

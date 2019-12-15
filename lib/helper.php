@@ -431,11 +431,19 @@ function menuAktif($menu) {
   $result = $url[count($url)-1];
   if($result == $menu)
   {
-    echo "class='btn btn-success success-icon-notika waves-effect'";
+    echo "class='btn btn-primary primary-icon-notika waves-effect'";
   }
   else
   {
     echo "class='btn btn-default btn-icon-notika waves-effect'";
+  }
+}
+
+function cekLogin()
+{
+  if(!isset($_SESSION))
+  {
+    header("Location: login.php");
   }
 }
 ?>

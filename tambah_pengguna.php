@@ -1,9 +1,7 @@
 <?php
-  session_start();
-  require_once "lib/helper.php";
-  cekLogin();
-  require_once "models/DomainPernyataan.php";
-  $domain = new DomainPernyataan();
+session_start();
+require_once "lib/helper.php";
+cekLogin();
 ?>
 <!doctype html>
 <html class="no-js" lang="">
@@ -32,28 +30,20 @@
                 <div class="curved-inner-pro">
                   <div class="curved-ctn">
                     <!-- BAGIAN ISI KONTEN -->
-                  <h2>Tambah Data Pernyataan</h2>
-                  <form action="proses_tambah_pernyataan.php" method="POST">
+                    <h2>Tambah Pengguna</h2>
+                  <form action="proses_tambah_pengguna.php" method="POST">
                     <div class="form-group">
-                      <label>Isi Pernyataan</label>
-                      <textarea class="form-control" name="pernyataan"></textarea>
+                      <label>Username</label>
+                      <input type="text" name="pengguna_username" class="form-control" />
                     </div>
                     <div class="form-group">
-                      <label>Domain</label>
-                      <select name="domain_id" class="form-control">
-                        <option>Pilih Domain</option>
-                        <?php
-                          $data_domain = $domain->ambilData();
-                          foreach($data_domain as $kat)
-                          {
-                        ?>
-                          <option value="<?=$kat['domain_id']?>"><?=$kat['domain_nama']." ".$kat['domain_keterangan']?></option>
-                        <?php
-                          }
-                        ?>
-                      </select>
+                      <label>Password</label>
+                      <input type="password" name="pengguna_password" class="form-control" />
                     </div>
-                    
+                    <div class="form-group">
+                      <label>Email</label>
+                      <input type="email" name="pengguna_email" class="form-control" />
+                    </div>
                     <div class="form-group">
                       <button type="submit" class="btn btn-primary">Simpan</button>
                       <button type="button" class="btn btn-success" onclick="window.history.back();">Kembali</button>
@@ -64,14 +54,12 @@
                 </div>
               </div>
             </div>
-            
         </div>
     </div>
     <!-- END KONTEN AREA-->
     
     <?php includeTemplate("footer.php"); ?>
     <?php includeTemplate("script.php"); ?>
-    
 </body>
 
 </html>

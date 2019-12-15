@@ -1,5 +1,7 @@
 <?php
+  session_start();
   require_once "lib/helper.php";
+  cekLogin();
   require_once "models/DomainPernyataan.php";
   require_once "models/Pernyataan.php";
   $domain = new DomainPernyataan();
