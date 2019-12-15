@@ -18,8 +18,7 @@ $responden_id = $responden->tambahData([
 
 $kuisioner_id = $kuisioner->tambahData([
   "responden_id" => $responden_id,
-  "kuisioner_tgl" => date("Y-m-d"),
-  "kuisioner_kode" => $_POST['kuisioner_kode']
+  "kuisioner_tgl" => date("Y-m-d")
 ]);
 
 $data_pernyataan = $_POST['pernyataan_id'];

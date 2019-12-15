@@ -133,7 +133,7 @@
                     
                     <button type="submit" class="btn btn-primary btn-sm">Simpan</button>
                     <button type="reset" class="btn btn-danger btn-sm">Reset</button>
-                    <button type="button" class="btn btn-success" onclick="window.history.back();">Kembali</button>
+                    <button type="button" class="btn btn-success btn-sm" onclick="window.history.back();">Kembali</button>
                     </form>
                     
                     <!-- EOF BAGIAN ISI KONTEN -->

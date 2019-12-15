@@ -53,35 +53,6 @@ $kuisioner = new Kuisioner();
                             // menampilkan data
                             foreach($data_kuisioner as $no => $pet)
                             {
-                              $harapan = 5;
-                              $gap = 0;
-                              $im = $pet['kuisioner_skor'] / ($pet['kuisioner_total_pernyataan']*$pet['kuisioner_total_responden']);
-                              $keterangan_im = "";
-                              if($im >= 0 && $im <= 0.49)
-                              {
-                                $keterangan_im = "Tidak Ada";
-                              }
-                              elseif($im >= 0.50 && $im <= 1.49)
-                              {
-                                $keterangan_im = "Inisialisasi";
-                              }
-                              elseif($im >= 1.50 && $im <= 2.49)
-                              {
-                                $keterangan_im = "Dapat Diulang";
-                              }
-                              elseif($im >= 2.50 && $im <= 3.49)
-                              {
-                                $keterangan_im = "Ditetapkan";
-                              }
-                              elseif($im >= 3.50 && $im <= 4.49)
-                              {
-                                $keterangan_im = "Terkelola";
-                              }
-                              elseif($im >= 4.50 && $im <= 5)
-                              {
-                                $keterangan_im = "Optimal";
-                              }
-                              $gap = $harapan - $im;
                           ?>
                           
                             <tr>
