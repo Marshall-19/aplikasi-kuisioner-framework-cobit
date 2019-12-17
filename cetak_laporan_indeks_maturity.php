@@ -65,6 +65,17 @@ $indeks_maturity = new IndeksMaturity();
                         ?>
                         </tbody>
                         </table>
+                        
+                        <div style="text-align: center; float: right; width: 300px;margin-top: 50px;">
+                      	Padang, <?php echo TanggalIndo(date('Y-m-d')); ?>
+                      	<br>
+                      	<br>
+                      	<br>
+                      	<br>
+                      	<br>
+                      	Nadia Machda Yuza
+                      </div>
+                      <div style="clear: both;"></div>
                         </div>
                   </div>
                   <!-- EOF BAGIAN ISI KONTEN -->

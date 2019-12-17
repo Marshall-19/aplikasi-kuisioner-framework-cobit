@@ -41,12 +41,7 @@ $responden = new Responden();
                           <thead>
                             <tr>
                               <th>No</th>
-                              <th>Nama</th>
-                              <th>Jenis Kelamin</th>
-                              <th>Usia</th>
-                              <th>Pendidikan</th>
-                              <th>Masa Kerja</th>
-                              <th>Status Sosial</th>
+                              <th>No Responden</th>
                               <th>Aksi</th>
                             </tr>
                           </thead>
@@ -62,11 +57,6 @@ $responden = new Responden();
                             <tr>
                               <td><?=$no+1?></td>
                               <td><?=$pet['responden_no']?></td>
-                              <td><?=$pet['responden_jk']?></td>
-                              <td><?=$pet['responden_usia']?></td>
-                              <td><?=$pet['responden_pendidikan']?></td>
-                              <td><?=$pet['responden_masa_kerja']?></td>
-                              <td><?=$pet['responden_status_sosial']?></td>
                               <td>
                                 <a href="proses_hapus_responden.php?responden_id=<?=$pet['responden_id']?>" class="btn btn-danger btn-sm">Hapus</a>
                               </td>

@@ -34,14 +34,14 @@
                 <div class="curved-inner-pro">
                   <div class="curved-ctn">
                     <!-- BAGIAN ISI KONTEN -->
-                    <h2>Tambah Data Kuisioner</h2>
+                    <h2>Tambah Data Kuesioner</h2>
                     <form action="proses_tambah_kuisioner.php" method="POST">
                     
                     <div class="form-group">
                       <label>Nomor Responden</label>
                       <input type="text" name="responden_no" class="form-control" />
                     </div>
-                    
+                    <!--
                     <div class="form-group">
                       <label>Usia</label>
                       <input type="radio" name="responden_usia" value="17 - 25 Tahun" /> 17 - 25 Tahun
@@ -75,7 +75,7 @@
                       <input type="radio" name="responden_status_sosial" value="Menikah" /> Menikah
                       <input type="radio" name="responden_status_sosial" value="Belum Menikah" /> Belum Menikah
                     </div>
-                    
+                    -->
                     <hr>
                     
                     <?php

@@ -36,7 +36,7 @@ cekLogin();
                       <label>Nomor Responden</label>
                       <input type="text" name="responden_no" class="form-control" />
                     </div>
-                    
+                    <!--
                     <div class="form-group">
                       <label>Usia</label>
                       <input type="radio" name="responden_usia"  value="17 - 25 Tahun" /> 17 - 25 Tahun
@@ -70,7 +70,7 @@ cekLogin();
                       <input type="radio" name="responden_status_sosial"  value="Menikah" /> Menikah
                       <input type="radio" name="responden_status_sosial"  value="Belum Menikah" /> Belum Menikah
                     </div>
-                    
+                    -->
                     <div class="form-group">
                       <button type="submit" class="btn btn-primary">Simpan</button>
                       <button type="button" class="btn btn-success" onclick="window.history.back();">Kembali</button>

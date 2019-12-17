@@ -16,10 +16,10 @@ class Models {
     // pengaturan database
     $this->db = new Medoo([
       'database_type' => 'mysql',
-      'database_name' => 'db_kuisioner_cobit',
-      'server' => 'db',
-      'username' => 'root',
-      'password' => 'mysql'
+      'database_name' => 'mandanon_cobit',
+      'server' => 'localhost',
+      'username' => 'mandanon_cobit',
+      'password' => 'qwe123*IOP'
     ]);
   }
  

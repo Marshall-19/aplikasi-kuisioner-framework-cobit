@@ -42,8 +42,9 @@ $gap = new Gap();
                             <tr>
                               <th>No</th>
                               <th>Domain Id</th>
-                              <th>Gap</th>
                               <th>Harapan</th>
+                              <th>Gap</th>
+                              
                               <th>Aksi</th>
                             </tr>
                           </thead>
@@ -59,8 +60,9 @@ $gap = new Gap();
                             <tr>
                               <td><?=$no+1?></td>
                               <td><?=$im['domain_nama']?></td>
-                              <td><?=$im['gap']?></td>
                               <td><?=$im['harapan']?></td>
+                              <td><?=$im['gap']?></td>
+                              
                               <td>
                                 <a href="proses_hapus_gap.php?gap_id=<?=$im['gap_id']?>" class="btn btn-danger btn-sm">Hapus</a>
                               </td>

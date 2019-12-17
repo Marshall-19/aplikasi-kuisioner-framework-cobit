@@ -14,7 +14,7 @@ CREATE TABLE `data_indeks_maturity` (`domain_nama` varchar(100), `domain_keteran
 
 
 DROP VIEW IF EXISTS `data_kuisioner`;
-CREATE TABLE `data_kuisioner` (`kuisioner_kode` varchar(10), `kuisioner_id` int(11), `kuisioner_tgl` date, `responden_id` int(11), `responden_no` varchar(100), `responden_usia` enum('17 - 25 Tahun','26 - 45 Tahun','> 46 Tahun'), `responden_jk` enum('Pria','Wanita'), `responden_pendidikan` enum('SMA','D3','S1','S2'), `responden_masa_kerja` enum('0 - 5 Tahun','6 - 10 Tahun','> 10 Tahun'), `responden_status_sosial` enum('Menikah','Belum Menikah'), `kuisioner_skor` decimal(27,0), `kuisioner_total_pernyataan` bigint(21), `kuisioner_total_responden` bigint(21));
+CREATE TABLE `data_kuisioner` (`kuisioner_kode` varchar(10), `kuisioner_id` int(11), `kuisioner_tgl` date, `responden_id` int(11), `responden_no` varchar(100), `kuisioner_skor` decimal(27,0), `kuisioner_total_pernyataan` bigint(21), `kuisioner_total_responden` bigint(21));
 
 
 DROP VIEW IF EXISTS `data_pernyataan`;
@@ -39,7 +39,7 @@ DROP TABLE IF EXISTS `tbl_gap`;
 CREATE TABLE `tbl_gap` (
   `gap_id` int(11) NOT NULL AUTO_INCREMENT,
   `indeks_id` int(11) NOT NULL,
-  `harapan` int(11) NOT NULL DEFAULT 5,
+  `harapan` int(11) NOT NULL DEFAULT '5',
   `gap` float NOT NULL,
   PRIMARY KEY (`gap_id`),
   UNIQUE KEY `indeks_id` (`indeks_id`),
@@ -47,7 +47,8 @@ CREATE TABLE `tbl_gap` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `tbl_gap` (`gap_id`, `indeks_id`, `harapan`, `gap`) VALUES
-(1,	2,	5,	1.85714);
+(1,	2,	5,	1.85714),
+(2,	3,	5,	2);
 
 DROP TABLE IF EXISTS `tbl_indeks_maturity`;
 CREATE TABLE `tbl_indeks_maturity` (
@@ -65,7 +66,8 @@ CREATE TABLE `tbl_indeks_maturity` (
 
 INSERT INTO `tbl_indeks_maturity` (`indeks_id`, `domain_id`, `pernyataan_total`, `responden_total`, `nilai_total`, `indeks_maturity`, `keterangan`) VALUES
 (2,	38,	7,	7,	154,	3.14286,	'Ditetapkan'),
-(3,	39,	8,	7,	168,	3,	'Ditetapkan');
+(3,	39,	8,	7,	168,	3,	'Ditetapkan'),
+(4,	41,	6,	9,	160,	2.96296,	'Ditetapkan');
 
 DROP TABLE IF EXISTS `tbl_jawaban_kuisioner`;
 CREATE TABLE `tbl_jawaban_kuisioner` (
@@ -392,37 +394,32 @@ DROP TABLE IF EXISTS `tbl_responden`;
 CREATE TABLE `tbl_responden` (
   `responden_id` int(11) NOT NULL AUTO_INCREMENT,
   `responden_no` varchar(100) NOT NULL,
-  `responden_usia` enum('17 - 25 Tahun','26 - 45 Tahun','> 46 Tahun') NOT NULL,
-  `responden_jk` enum('Pria','Wanita') NOT NULL,
-  `responden_pendidikan` enum('SMA','D3','S1','S2') NOT NULL,
-  `responden_masa_kerja` enum('0 - 5 Tahun','6 - 10 Tahun','> 10 Tahun') NOT NULL,
-  `responden_status_sosial` enum('Menikah','Belum Menikah') NOT NULL,
   PRIMARY KEY (`responden_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `tbl_responden` (`responden_id`, `responden_no`, `responden_usia`, `responden_jk`, `responden_pendidikan`, `responden_masa_kerja`, `responden_status_sosial`) VALUES
-(2,	'Dolore vitae rem pos',	'26 - 45 Tahun',	'Wanita',	'D3',	'> 10 Tahun',	'Menikah'),
-(3,	'Dolore vitae rem pos',	'26 - 45 Tahun',	'Wanita',	'D3',	'> 10 Tahun',	'Menikah'),
-(4,	'Atque eligendi in qu',	'26 - 45 Tahun',	'Wanita',	'SMA',	'6 - 10 Tahun',	'Menikah'),
-(5,	'Dignissimos qui faci',	'26 - 45 Tahun',	'Pria',	'S2',	'0 - 5 Tahun',	'Menikah'),
-(6,	'Quod debitis sint al',	'> 46 Tahun',	'Wanita',	'SMA',	'0 - 5 Tahun',	'Menikah'),
-(7,	'Autem lorem ex volup',	'26 - 45 Tahun',	'Pria',	'S2',	'> 10 Tahun',	'Belum Menikah'),
-(8,	'Culpa aspernatur hic',	'> 46 Tahun',	'Wanita',	'S1',	'> 10 Tahun',	'Belum Menikah'),
-(9,	'Atque illo nisi pari',	'26 - 45 Tahun',	'Wanita',	'D3',	'> 10 Tahun',	'Belum Menikah'),
-(10,	'Temporibus in nihil ',	'17 - 25 Tahun',	'Wanita',	'S2',	'6 - 10 Tahun',	'Menikah'),
-(11,	'Amet commodo occaec',	'> 46 Tahun',	'Wanita',	'S1',	'0 - 5 Tahun',	'Belum Menikah'),
-(12,	'Amet commodo occaec',	'> 46 Tahun',	'Wanita',	'S1',	'0 - 5 Tahun',	'Belum Menikah');
+INSERT INTO `tbl_responden` (`responden_id`, `responden_no`) VALUES
+(2,	'Dolore vitae rem pos'),
+(3,	'Dolore vitae rem pos'),
+(4,	'Atque eligendi in qu'),
+(5,	'Dignissimos qui faci'),
+(6,	'Quod debitis sint al'),
+(7,	'Autem lorem ex volup'),
+(8,	'Culpa aspernatur hic'),
+(9,	'Atque illo nisi pari'),
+(10,	'Temporibus in nihil '),
+(11,	'Amet commodo occaec'),
+(12,	'Amet commodo occaec');
 
 DROP TABLE IF EXISTS `data_gap`;
-CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `data_gap` AS select `tbl_domain`.`domain_nama` AS `domain_nama`,`tbl_domain`.`domain_keterangan` AS `domain_keterangan`,`tbl_indeks_maturity`.`indeks_id` AS `indeks_id`,`tbl_indeks_maturity`.`domain_id` AS `domain_id`,`tbl_indeks_maturity`.`pernyataan_total` AS `pernyataan_total`,`tbl_indeks_maturity`.`responden_total` AS `responden_total`,`tbl_indeks_maturity`.`nilai_total` AS `nilai_total`,`tbl_indeks_maturity`.`indeks_maturity` AS `indeks_maturity`,`tbl_indeks_maturity`.`keterangan` AS `keterangan`,`tbl_gap`.`harapan` AS `harapan`,`tbl_gap`.`gap` AS `gap`,`tbl_gap`.`gap_id` AS `gap_id` from ((`tbl_indeks_maturity` join `tbl_domain` on(`tbl_indeks_maturity`.`domain_id` = `tbl_domain`.`domain_id`)) join `tbl_gap` on(`tbl_gap`.`indeks_id` = `tbl_indeks_maturity`.`indeks_id`));
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `data_gap` AS select `tbl_domain`.`domain_nama` AS `domain_nama`,`tbl_domain`.`domain_keterangan` AS `domain_keterangan`,`tbl_indeks_maturity`.`indeks_id` AS `indeks_id`,`tbl_indeks_maturity`.`domain_id` AS `domain_id`,`tbl_indeks_maturity`.`pernyataan_total` AS `pernyataan_total`,`tbl_indeks_maturity`.`responden_total` AS `responden_total`,`tbl_indeks_maturity`.`nilai_total` AS `nilai_total`,`tbl_indeks_maturity`.`indeks_maturity` AS `indeks_maturity`,`tbl_indeks_maturity`.`keterangan` AS `keterangan`,`tbl_gap`.`harapan` AS `harapan`,`tbl_gap`.`gap` AS `gap`,`tbl_gap`.`gap_id` AS `gap_id` from ((`tbl_indeks_maturity` join `tbl_domain` on((`tbl_indeks_maturity`.`domain_id` = `tbl_domain`.`domain_id`))) join `tbl_gap` on((`tbl_gap`.`indeks_id` = `tbl_indeks_maturity`.`indeks_id`)));
 
 DROP TABLE IF EXISTS `data_indeks_maturity`;
-CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `data_indeks_maturity` AS select `tbl_domain`.`domain_nama` AS `domain_nama`,`tbl_domain`.`domain_keterangan` AS `domain_keterangan`,`tbl_indeks_maturity`.`indeks_id` AS `indeks_id`,`tbl_indeks_maturity`.`domain_id` AS `domain_id`,`tbl_indeks_maturity`.`pernyataan_total` AS `pernyataan_total`,`tbl_indeks_maturity`.`responden_total` AS `responden_total`,`tbl_indeks_maturity`.`nilai_total` AS `nilai_total`,`tbl_indeks_maturity`.`indeks_maturity` AS `indeks_maturity`,`tbl_indeks_maturity`.`keterangan` AS `keterangan` from (`tbl_indeks_maturity` join `tbl_domain` on(`tbl_indeks_maturity`.`domain_id` = `tbl_domain`.`domain_id`));
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `data_indeks_maturity` AS select `tbl_domain`.`domain_nama` AS `domain_nama`,`tbl_domain`.`domain_keterangan` AS `domain_keterangan`,`tbl_indeks_maturity`.`indeks_id` AS `indeks_id`,`tbl_indeks_maturity`.`domain_id` AS `domain_id`,`tbl_indeks_maturity`.`pernyataan_total` AS `pernyataan_total`,`tbl_indeks_maturity`.`responden_total` AS `responden_total`,`tbl_indeks_maturity`.`nilai_total` AS `nilai_total`,`tbl_indeks_maturity`.`indeks_maturity` AS `indeks_maturity`,`tbl_indeks_maturity`.`keterangan` AS `keterangan` from (`tbl_indeks_maturity` join `tbl_domain` on((`tbl_indeks_maturity`.`domain_id` = `tbl_domain`.`domain_id`)));
 
 DROP TABLE IF EXISTS `data_kuisioner`;
-CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `data_kuisioner` AS select `tbl_kuisioner`.`kuisioner_kode` AS `kuisioner_kode`,`tbl_kuisioner`.`kuisioner_id` AS `kuisioner_id`,`tbl_kuisioner`.`kuisioner_tgl` AS `kuisioner_tgl`,`tbl_kuisioner`.`responden_id` AS `responden_id`,`tbl_responden`.`responden_no` AS `responden_no`,`tbl_responden`.`responden_usia` AS `responden_usia`,`tbl_responden`.`responden_jk` AS `responden_jk`,`tbl_responden`.`responden_pendidikan` AS `responden_pendidikan`,`tbl_responden`.`responden_masa_kerja` AS `responden_masa_kerja`,`tbl_responden`.`responden_status_sosial` AS `responden_status_sosial`,sum(`tbl_jawaban_kuisioner`.`skor`) AS `kuisioner_skor`,count(`tbl_jawaban_kuisioner`.`pernyataan_id`) AS `kuisioner_total_pernyataan`,(select count(`kuisioner`.`responden_id`) from `tbl_kuisioner` `kuisioner` where `kuisioner`.`kuisioner_kode` = `tbl_kuisioner`.`kuisioner_kode` group by `kuisioner`.`kuisioner_kode`) AS `kuisioner_total_responden` from ((`tbl_kuisioner` join `tbl_jawaban_kuisioner` on(`tbl_jawaban_kuisioner`.`kuisioner_id` = `tbl_kuisioner`.`kuisioner_id`)) join `tbl_responden` on(`tbl_responden`.`responden_id` = `tbl_kuisioner`.`responden_id`)) group by `tbl_jawaban_kuisioner`.`kuisioner_id`;
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `data_kuisioner` AS select `tbl_kuisioner`.`kuisioner_kode` AS `kuisioner_kode`,`tbl_kuisioner`.`kuisioner_id` AS `kuisioner_id`,`tbl_kuisioner`.`kuisioner_tgl` AS `kuisioner_tgl`,`tbl_kuisioner`.`responden_id` AS `responden_id`,`tbl_responden`.`responden_no` AS `responden_no`,sum(`tbl_jawaban_kuisioner`.`skor`) AS `kuisioner_skor`,count(`tbl_jawaban_kuisioner`.`pernyataan_id`) AS `kuisioner_total_pernyataan`,(select count(`kuisioner`.`responden_id`) from `tbl_kuisioner` `kuisioner` where (`kuisioner`.`kuisioner_kode` = `tbl_kuisioner`.`kuisioner_kode`) group by `kuisioner`.`kuisioner_kode`) AS `kuisioner_total_responden` from ((`tbl_kuisioner` join `tbl_jawaban_kuisioner` on((`tbl_jawaban_kuisioner`.`kuisioner_id` = `tbl_kuisioner`.`kuisioner_id`))) join `tbl_responden` on((`tbl_responden`.`responden_id` = `tbl_kuisioner`.`responden_id`))) group by `tbl_jawaban_kuisioner`.`kuisioner_id`;
 
 DROP TABLE IF EXISTS `data_pernyataan`;
-CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `data_pernyataan` AS select `tbl_pernyataan`.`pernyataan_id` AS `pernyataan_id`,`tbl_pernyataan`.`pernyataan` AS `pernyataan`,`tbl_pernyataan`.`domain_id` AS `domain_id`,`tbl_domain`.`domain_nama` AS `domain_nama`,`tbl_domain`.`domain_keterangan` AS `domain_keterangan` from (`tbl_pernyataan` join `tbl_domain` on(`tbl_pernyataan`.`domain_id` = `tbl_domain`.`domain_id`));
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `data_pernyataan` AS select `tbl_pernyataan`.`pernyataan_id` AS `pernyataan_id`,`tbl_pernyataan`.`pernyataan` AS `pernyataan`,`tbl_pernyataan`.`domain_id` AS `domain_id`,`tbl_domain`.`domain_nama` AS `domain_nama`,`tbl_domain`.`domain_keterangan` AS `domain_keterangan` from (`tbl_pernyataan` join `tbl_domain` on((`tbl_pernyataan`.`domain_id` = `tbl_domain`.`domain_id`)));
 
--- 2019-12-15 13:47:59
+-- 2019-12-17 04:22:01

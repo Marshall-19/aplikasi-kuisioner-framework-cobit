@@ -32,7 +32,13 @@
                 <div class="curved-inner-pro">
                   <div class="curved-ctn">
                     <!-- BAGIAN ISI KONTEN -->
-                    <h1 class="text-center">Selamat Datang!</h1>
+                    <h1 class="text-center">
+                    	SELAMAT DATANG DI <br>
+                    	PROGRAM PENGUKURAN KUALITAS <br>
+                    	REKAPITULASI HASIL PERHITUNGAN KUESIONER <br>
+                    	PADA RESPONDEN <i>RAIL DOCUMENT SYSTEM (RDS)</i> <br>
+                    	PT. KAI (PERSERO) DIVISI REGIONAL II SUMATERA BARAT
+                    </h1>
                   <!-- EOF BAGIAN ISI KONTEN -->
                   </div>
                 </div>

@@ -56,7 +56,7 @@
                     </div>
                     <div class="form-group">
                       <label>Harapan</label>
-                      <input type="number" name="harapan" class="form-control" readonly />
+                      <input type="number" name="harapan" class="form-control" />
                     </div>
                     <div class="form-group">
                       <label>GAP</label>

@@ -33,8 +33,9 @@ $gap = new Gap();
                             <tr>
                               <th>No</th>
                               <th>Domain Id</th>
-                              <th>Gap</th>
                               <th>Harapan</th>
+                              <th>Gap</th>
+                              
                             </tr>
                           </thead>
                           <tbody>
@@ -49,15 +50,25 @@ $gap = new Gap();
                             <tr>
                               <td><?=$no+1?></td>
                               <td><?=$im['domain_nama']?></td>
-                              <td><?=$im['gap']?></td>
                               <td><?=$im['harapan']?></td>
+                              <td><?=$im['gap']?></td>
                             </tr>
-                          
                         <?php
                             }
                         ?>
                         </tbody>
                       </table>
+                      
+                      <div style="text-align: center; float: right; width: 300px;margin-top: 50px;">
+                      	Padang, <?php echo TanggalIndo(date('Y-m-d')); ?>
+                      	<br>
+                      	<br>
+                      	<br>
+                      	<br>
+                      	<br>
+                      	Nadia Machda Yuza
+                      </div>
+                      <div style="clear: both;"></div>
                     </div>
                   </div>
                   <!-- EOF BAGIAN ISI KONTEN -->

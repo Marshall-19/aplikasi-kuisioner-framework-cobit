@@ -1,0 +1,36 @@
+[13-Dec-2019 04:07:31 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2005] Unknown MySQL server host 'db' (2) in /home/mandanon/cobit.dafma.id/models/database.php:321
+Stack trace:
+#0 /home/mandanon/cobit.dafma.id/models/models.php(18): Medoo\Medoo->__construct(Array)
+#1 /home/mandanon/cobit.dafma.id/models/Kuisioner.php(6): Models->__construct()
+#2 /home/mandanon/cobit.dafma.id/tampil_kuisioner.php(4): Kuisioner->__construct()
+#3 {main}
+  thrown in /home/mandanon/cobit.dafma.id/models/database.php on line 321
+[13-Dec-2019 04:07:46 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2005] Unknown MySQL server host 'db' (2) in /home/mandanon/cobit.dafma.id/models/database.php:321
+Stack trace:
+#0 /home/mandanon/cobit.dafma.id/models/models.php(18): Medoo\Medoo->__construct(Array)
+#1 /home/mandanon/cobit.dafma.id/models/Kuisioner.php(6): Models->__construct()
+#2 /home/mandanon/cobit.dafma.id/tampil_kuisioner.php(4): Kuisioner->__construct()
+#3 {main}
+  thrown in /home/mandanon/cobit.dafma.id/models/database.php on line 321
+[13-Dec-2019 04:07:58 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2005] Unknown MySQL server host 'db' (2) in /home/mandanon/cobit.dafma.id/models/database.php:321
+Stack trace:
+#0 /home/mandanon/cobit.dafma.id/models/models.php(18): Medoo\Medoo->__construct(Array)
+#1 /home/mandanon/cobit.dafma.id/models/Kuisioner.php(6): Models->__construct()
+#2 /home/mandanon/cobit.dafma.id/tampil_kuisioner.php(4): Kuisioner->__construct()
+#3 {main}
+  thrown in /home/mandanon/cobit.dafma.id/models/database.php on line 321
+[13-Dec-2019 04:08:16 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2005] Unknown MySQL server host 'db' (2) in /home/mandanon/cobit.dafma.id/models/database.php:321
+Stack trace:
+#0 /home/mandanon/cobit.dafma.id/models/models.php(18): Medoo\Medoo->__construct(Array)
+#1 /home/mandanon/cobit.dafma.id/models/Kuisioner.php(6): Models->__construct()
+#2 /home/mandanon/cobit.dafma.id/tampil_kuisioner.php(4): Kuisioner->__construct()
+#3 {main}
+  thrown in /home/mandanon/cobit.dafma.id/models/database.php on line 321
+[13-Dec-2019 21:04:19 UTC] PHP Notice:  Undefined index: pertanyaan in /home/mandanon/cobit.dafma.id/proses_tambah_pertanyaan.php on line 5
+[15-Dec-2019 00:13:26 UTC] PHP Warning:  require_once(models/DomainPernyataan.php): failed to open stream: No such file or directory in /home/mandanon/cobit.dafma.id/tambah_kuisioner.php on line 3
+[15-Dec-2019 00:13:26 UTC] PHP Fatal error:  require_once(): Failed opening required 'models/DomainPernyataan.php' (include_path='.:/opt/alt/php71/usr/share/pear') in /home/mandanon/cobit.dafma.id/tambah_kuisioner.php on line 3
+[17-Dec-2019 03:38:11 UTC] PHP Notice:  Undefined index: responden_usia in /home/mandanon/cobit.dafma.id/models/models.php on line 79
+[17-Dec-2019 03:38:11 UTC] PHP Notice:  Undefined index: responden_jk in /home/mandanon/cobit.dafma.id/models/models.php on line 79
+[17-Dec-2019 03:38:11 UTC] PHP Notice:  Undefined index: responden_pendidikan in /home/mandanon/cobit.dafma.id/models/models.php on line 79
+[17-Dec-2019 03:38:11 UTC] PHP Notice:  Undefined index: responden_masa_kerja in /home/mandanon/cobit.dafma.id/models/models.php on line 79
+[17-Dec-2019 03:38:11 UTC] PHP Notice:  Undefined index: responden_status_sosial in /home/mandanon/cobit.dafma.id/models/models.php on line 79

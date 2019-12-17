@@ -10,7 +10,7 @@ $kuisioner = new Kuisioner();
 <html class="no-js" lang="">
 
 <head>
-  <title>Data Kuisioner</title>
+  <title>Data Kuesioner</title>
   <?php includeTemplate("head.php"); ?>
   <style>
     .container {
@@ -35,8 +35,8 @@ $kuisioner = new Kuisioner();
                   <div class="curved-ctn">
                     <!-- BAGIAN ISI KONTEN -->
                     <div class="normal-table-list">
-                      <h2>Data Kuisioner</h2>
-                      <a href="tambah_kuisioner.php" class="btn btn-primary btn-sm">Tambah Kuisioner Baru</a>
+                      <h2>Data Kuesioner</h2>
+                      <a href="tambah_kuisioner.php" class="btn btn-primary btn-sm">Tambah Kuesioner Baru</a>
                       <div class="bsc-tbl-st">
                         <table class="table table-bordered table-stripped">
                           <thead>
