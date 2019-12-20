@@ -59,6 +59,12 @@ $gap = new Gap();
                         </tbody>
                       </table>
                       
+                      <h2>Laporan Grafik GAP</h2>
+                      <canvas id="radar-chart" width="800" height="450"></canvas>
+                      <br>
+                      <br>
+                      <br>
+                      
                       <div style="text-align: center; float: right; width: 300px;margin-top: 50px;">
                       	Padang, <?php echo TanggalIndo(date('Y-m-d')); ?>
                       	<br>
@@ -79,6 +85,57 @@ $gap = new Gap();
     <!-- END KONTEN AREA-->
     <?php includeTemplate("script.php"); ?>
     <script>
+      var data_gap = <?=json_encode($gap->ambilData());?>;
+      var labels = [];
+      var indeks_maturity = [];
+      var gap = [];
+      var harapan = [];
+      for(var x = 0; x < data_gap.length; x++)
+      {
+        labels[x] = data_gap[x].domain_nama;
+        indeks_maturity[x] = data_gap[x].indeks_maturity;
+        gap[x] = data_gap[x].gap;
+        harapan[x] = data_gap[x].harapan;
+      }
+    	new Chart(document.getElementById("radar-chart"), {
+          responsive: true,        
+          type: 'bar',
+          data: {
+            labels: labels,
+            datasets: [
+              {
+                label: "Indeks Maturity",
+                backgroundColor: "#3e95cd",
+                data: indeks_maturity
+              },
+              {
+                label: "Harapan",
+                backgroundColor: "#8e5ea2",
+                data: harapan
+              },
+              {
+                label: "GAP",
+                backgroundColor: "#6a0d0d",
+                data: gap
+              }
+            ]
+          },
+          options: {
+            title: {
+              display: true,
+              text: 'Grafik Laporan GAP'
+            },
+            scales: {
+               yAxes: [{
+                  ticks: {
+                     min: Math.min.apply(this, indeks_maturity) * 0,
+                     max: Math.max.apply(this, harapan) + 5,
+                     stepSize: 1
+                  }
+               }]
+            }
+          }
+      });
       window.print();
     </script>
 </body>
