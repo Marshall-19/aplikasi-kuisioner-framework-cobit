@@ -42,6 +42,7 @@ $gap = new Gap();
                             <tr>
                               <th>No</th>
                               <th>Domain Id</th>
+                              <th>Indeks Maturity</th>
                               <th>Harapan</th>
                               <th>Gap</th>
                               
@@ -60,6 +61,7 @@ $gap = new Gap();
                             <tr>
                               <td><?=$no+1?></td>
                               <td><?=$im['domain_nama']?></td>
+                              <td><?=$im['indeks_maturity']?></td>
                               <td><?=$im['harapan']?></td>
                               <td><?=$im['gap']?></td>
                               

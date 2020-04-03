@@ -446,4 +446,34 @@ function cekLogin()
     header("Location: login.php");
   }
 }
+
+function keteranganIndeksMaturity($im)
+{
+	$keterangan = "";
+	if($im >= 0 && $im <= 0.49)
+    {
+      $keterangan = "Tidak Ada";
+    }
+    else if($im >= 0.50 && $im <= 1.49)
+    {
+      $keterangan = "Inisialisasi";
+    }
+    else if($im >= 1.50 && $im <= 2.49)
+    {
+      $keterangan = "Dapat Diulang";
+    }
+    else if($im >= 2.50 && $im <= 3.49)
+    {
+      $keterangan = "Ditetapkan";
+    }
+    else if($im >= 3.50 && $im <= 4.49)
+    {
+      $keterangan = "Terkelola";
+    }
+    else if($im >= 4.50 && $im <= 5)
+    {
+      $keterangan = "Optimal";
+    }
+    return $keterangan;
+}
 ?>

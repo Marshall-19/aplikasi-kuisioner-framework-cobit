@@ -26,13 +26,14 @@ $gap = new Gap();
             <div class="col-xs-12">
                     <!-- BAGIAN ISI KONTEN -->
                     <div class="normal-table-list">
-                      <h2>Laporan GAP</h2>
+                      <h2>Laporan Perhitungan Nilai GAP</h2>
                       <div class="bsc-tbl-st">
                         <table style="width: 100%;"  class="table table-bordered table-stripped">
                           <thead>
                             <tr>
                               <th>No</th>
                               <th>Domain Id</th>
+                              <th>Indeks Maturity</th>
                               <th>Harapan</th>
                               <th>Gap</th>
                               
@@ -50,6 +51,7 @@ $gap = new Gap();
                             <tr>
                               <td><?=$no+1?></td>
                               <td><?=$im['domain_nama']?></td>
+                              <td><?=$im['indeks_maturity']?></td>
                               <td><?=$im['harapan']?></td>
                               <td><?=$im['gap']?></td>
                             </tr>

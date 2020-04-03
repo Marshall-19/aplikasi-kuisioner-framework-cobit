@@ -42,9 +42,10 @@ $indeks_maturity = new IndeksMaturity();
                             <tr>
                               <th>No</th>
                               <th>Domain Id</th>
-                              <th>Total Pernyataan</th>
-                              <th>Total Responden</th>
-                              <th>Total Nilai</th>
+                              <th>Jumlah Pernyataan</th>
+                              <th>Jumlah Responden</th>
+                              <th>Pertanyaan x Responden</th>
+                              <th>Jumlah Nilai</th>
                               <th>Indeks Maturity</th>
                               <th>Keterangan</th>
                               <th>Aksi</th>
@@ -64,6 +65,7 @@ $indeks_maturity = new IndeksMaturity();
                               <td><?=$im['domain_nama']?></td>
                               <td><?=$im['pernyataan_total']?></td>
                               <td><?=$im['responden_total']?></td>
+                              <td><?=$im['responden_total']*$im['pernyataan_total']?></td>
                               <td><?=$im['nilai_total']?></td>
                               <td><?=$im['indeks_maturity']?></td>
                               <td><?=$im['keterangan']?></td>

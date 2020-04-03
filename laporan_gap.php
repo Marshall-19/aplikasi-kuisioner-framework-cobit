@@ -34,7 +34,7 @@ $gap = new Gap();
                   <div class="curved-ctn">
                     <!-- BAGIAN ISI KONTEN -->
                     <div class="normal-table-list">
-                      <h2>Laporan GAP</h2>
+                      <h2>Laporan Perhitungan GAP</h2>
                       <a href="cetak_laporan_gap.php" class="btn btn-primary btn-sm">Cetak</a>
                       <div class="bsc-tbl-st">
                         <table style="width: 100%;"  class="table table-bordered table-stripped">
@@ -42,6 +42,7 @@ $gap = new Gap();
                             <tr>
                               <th>No</th>
                               <th>Domain Id</th>
+                              <th>Indeks Maturity</th>
                               <th>Harapan</th>
                               <th>Gap</th>
                               
@@ -58,6 +59,7 @@ $gap = new Gap();
                             <tr>
                               <td><?=$no+1?></td>
                               <td><?=$im['domain_nama']?></td>
+                              <td><?=$im['indeks_maturity']?></td>
                               <td><?=$im['harapan']?></td>
                               <td><?=$im['gap']?></td>
                             </tr>
